@@ -5,7 +5,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 export class RestProvider {
 
   // TODO: Need to modify after AWS instance setting up.
-  apiUrl = 'http://localhost:8080/';
+  apiUrl = 'http://18.221.147.253/';
 
   constructor(public http: HttpClient) {
   }
