@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="appBackground">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1 align="">Claim Status Confirm</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Claim Id</ion-label>
+      <ion-label >{{claimData.id}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Claim Name</ion-label>
+      <ion-label>{{claimData.name}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Status</ion-label>
+      <ion-label>{{status}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <button ion-button full color="success" (click)="backToList()">Back to Claim List</button>
+</ion-content>

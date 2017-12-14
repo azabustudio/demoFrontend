@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="appBackground">
+	<ion-grid>
+	  <ion-row>
+	    <ion-col>
+	      <h1 align="">Welcome to our App</h1>
+        </ion-col>
+	  </ion-row>
+	</ion-grid>
+
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Login Id</ion-label>
+      <ion-input type="text" [(ngModel)]="userData.id"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
+    </ion-item>
+  </ion-list>
+  
+  <button ion-button block full color="success" (click)="login()">Login Page</button>
+
+</ion-content>
