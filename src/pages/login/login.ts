@@ -11,7 +11,7 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class Login {
   title = 'Login Screen';
-  userData = {"id": "","password": ""};
+  userData = { "id": "ray", "password": "test" };
 
   constructor(
     public navCtrl: NavController,
@@ -22,13 +22,13 @@ export class Login {
 
   login() {
     this.restProvider.login(this.userData.id, this.userData.password)
-    .then(data => {
-      if ((data as any).status === "sucess") {
-        this.navCtrl.setRoot(ClaimListPage);
-      } else {
-        this.presentAlert()
-      }
-    });
+      .then(data => {
+        if ((data as any).status === "success") {
+          this.navCtrl.setRoot(ClaimListPage);
+        } else {
+          this.presentAlert()
+        }
+      });
   }
 
   presentAlert() {

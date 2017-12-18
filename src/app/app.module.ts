@@ -11,6 +11,7 @@ import { CreateClaimPage } from '../pages/create-claim/create-claim';
 import { ClaimResultPage } from '../pages/claim-result/claim-result';
 import { RestProvider } from '../providers/rest/rest';
 import { HttpClientModule } from '@angular/common/http';
+import { ClaimDetailPage } from '../pages/claim-detail/claim-detail';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     Login,
     ClaimListPage,
     CreateClaimPage,
-    ClaimResultPage
+    ClaimResultPage,
+    ClaimDetailPage
   ],
   imports: [
     BrowserModule,
@@ -32,14 +34,15 @@ import { HttpClientModule } from '@angular/common/http';
     Login,
     ClaimListPage,
     CreateClaimPage,
-    ClaimResultPage
+    ClaimResultPage,
+    ClaimDetailPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     HttpClientModule,
     RestProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }

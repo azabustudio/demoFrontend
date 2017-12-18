@@ -5,14 +5,14 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 export class RestProvider {
 
   // TODO: Need to modify after AWS instance setting up.
-  apiUrl = 'http://18.221.147.253/';
+  apiUrl = 'http://localhost:8080/';
 
   constructor(public http: HttpClient) {
   }
 
   getStatus(category) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'getStatus?category=' + category).subscribe(data => {
+      this.http.get(this.apiUrl + 'getStatus?category=' + category).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -22,7 +22,7 @@ export class RestProvider {
 
   login(id, password) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'login?username=' + id + '&password=' + password).subscribe(data => {
+      this.http.get(this.apiUrl + 'login?username=' + id + '&password=' + password).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
