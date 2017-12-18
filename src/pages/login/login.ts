@@ -4,6 +4,8 @@ import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { ClaimListPage } from '../claim-list/claim-list';
 import { RestProvider } from '../../providers/rest/rest';
+import { RegisterPage } from '../register/register';
+import { ActionSheetController } from 'ionic-angular'
 
 @Component({
   selector: 'page-login',
@@ -38,5 +40,9 @@ export class Login {
       buttons: ['Ok']
     });
     alert.present();
+  }
+
+  register() {
+    this.navCtrl.setRoot(RegisterPage);
   }
 }
