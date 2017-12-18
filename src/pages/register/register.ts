@@ -19,6 +19,6 @@ export class RegisterPage {
   }
 
   register() {
-    this.navCtrl.setRoot(ClaimListPage);
+    this.navCtrl.setRoot(Login);
   }
 }

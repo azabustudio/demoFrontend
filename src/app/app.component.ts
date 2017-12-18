@@ -7,6 +7,8 @@ import { Login } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ClaimResultPage } from '../pages/claim-result/claim-result';
 import { CreateClaimPage } from '../pages/create-claim/create-claim';
+import { TabsPage } from '../pages/tabs/tabs';
+
 @Component({
   templateUrl: 'app.html'
 })

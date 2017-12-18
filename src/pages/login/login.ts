@@ -6,6 +6,7 @@ import { ClaimListPage } from '../claim-list/claim-list';
 import { RestProvider } from '../../providers/rest/rest';
 import { RegisterPage } from '../register/register';
 import { ActionSheetController } from 'ionic-angular'
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-login',
@@ -26,7 +27,7 @@ export class Login {
     this.restProvider.login(this.userData.id, this.userData.password)
       .then(data => {
         if ((data as any).status === "success") {
-          this.navCtrl.setRoot(ClaimListPage);
+          this.navCtrl.setRoot(TabsPage);
         } else {
           this.presentAlert()
         }
@@ -43,6 +44,6 @@ export class Login {
   }
 
   register() {
-    this.navCtrl.push(RegisterPage);
+    this.navCtrl.push(TabsPage);
   }
 }

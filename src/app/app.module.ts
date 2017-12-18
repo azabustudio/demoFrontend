@@ -19,6 +19,7 @@ import { RestProvider } from '../providers/rest/rest';
 
 // REST API 通信用。
 import { HttpClientModule } from '@angular/common/http';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     ClaimResultPage,
     ClaimDetailPage,
     RegisterPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
     ClaimResultPage,
     ClaimDetailPage,
     RegisterPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
