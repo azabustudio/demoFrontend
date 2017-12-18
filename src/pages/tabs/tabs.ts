@@ -1,8 +1,10 @@
+import { MyPage } from './../my/my';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Login } from '../login/login';
 import { RegisterPage } from '../register/register';
 import { ClaimListPage } from '../claim-list/claim-list';
+import { SearchPage } from '../search/search';
 
 /**
  * Generated class for the TabsPage page.
@@ -17,12 +19,14 @@ import { ClaimListPage } from '../claim-list/claim-list';
 })
 export class TabsPage {
 
-  tab1: any;
-  tab2: any;
+  claimList: any;
+  search: any;
+  my: any;
 
   constructor() {
-    this.tab1 = ClaimListPage;
-    this.tab2 = ClaimListPage;
+    this.claimList = ClaimListPage;
+    this.search = SearchPage;
+    this.my = MyPage;
   }
 
   ionViewDidLoad() {

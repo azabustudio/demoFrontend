@@ -3,31 +3,16 @@
     <ion-title>
       {{title}}
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="createClaim()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="appBackground; no-scroll">
-  <!-- <ion-grid>
-    <ion-row>
-      <ion-col>
-        <h1 align="">Claim status list</h1>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-list>
-    <ion-item style="background-color: #86b0f8">
-      <ion-label>ID</ion-label>
-      <ion-label>Name</ion-label>
-      <ion-label>Status</ion-label>
-    </ion-item>
-    <ion-item *ngFor="let claim of claims">
-      <ion-label>{{claim.id}}</ion-label>
-      <ion-label>{{claim.name}}</ion-label>
-      <ion-label>{{claim.status}}</ion-label>
-    </ion-item>
-  </ion-list> -->
-  <button ion-button full color="success" (click)="createClaim()">Create New Claim</button>
-
+<ion-content padding class="appBackground;">
   <ion-list>
     <ion-item-sliding *ngFor="let claim of claims" (click)="openClaimDetail($event, claim)">
       <ion-item>

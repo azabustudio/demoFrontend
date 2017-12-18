@@ -1,0 +1,27 @@
+page-my {
+    ion-card {
+        padding: 10px 20px;
+    }
+}
+
+div {
+    .item-inner {
+        margin-left: 5px;
+    }
+}
+
+ion-list {
+    ion-item.item {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+ion-card.myFunction {
+    padding: 0;
+    button {
+        padding-left: 15px;
+        padding-right: 15px;
+        border-top: 1px solid #dedede;
+    }
+}

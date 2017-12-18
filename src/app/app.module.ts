@@ -1,3 +1,5 @@
+import { MyPage } from './../pages/my/my';
+import { SearchPage } from './../pages/search/search';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -30,7 +32,9 @@ import { TabsPage } from '../pages/tabs/tabs';
     ClaimResultPage,
     ClaimDetailPage,
     RegisterPage,
-    TabsPage
+    TabsPage,
+    SearchPage,
+    MyPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,9 @@ import { TabsPage } from '../pages/tabs/tabs';
     ClaimResultPage,
     ClaimDetailPage,
     RegisterPage,
-    TabsPage
+    TabsPage,
+    SearchPage,
+    MyPage
   ],
   providers: [
     StatusBar,
