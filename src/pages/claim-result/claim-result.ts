@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ClaimListPage } from '../claim-list/claim-list';
 import { RestProvider } from '../../providers/rest/rest';
+import { Claim } from '../../models/claim-model';
 
 @IonicPage()
 @Component({
@@ -9,9 +10,9 @@ import { RestProvider } from '../../providers/rest/rest';
   templateUrl: 'claim-result.html',
 })
 export class ClaimResultPage {
-  title = 'Claim Staus Screen';
-  claimData = {"id": "","name": "","category":""};
-  status = '';
+  title: string = 'Claim Staus Screen';
+  claimData: Claim = new Claim();
+  status: string = '';
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams, public restProvider: RestProvider) {

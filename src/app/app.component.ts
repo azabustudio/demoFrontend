@@ -4,11 +4,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Login } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { ClaimResultPage } from '../pages/claim-result/claim-result';
+import { CreateClaimPage } from '../pages/create-claim/create-claim';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = Login;
+  rootPage: any = Login;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

@@ -6,33 +6,33 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding class="appBackground; no-scroll">
-	<ion-grid>
-	  <ion-row>
-	    <ion-col>
-	      <h1 align="">New Claim</h1>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1 align="">New Claim</h1>
       </ion-col>
-	  </ion-row>
-	</ion-grid>
+    </ion-row>
+  </ion-grid>
 
   <ion-list>
     <ion-item>
-      <ion-label fixed>Claim Id</ion-label>
+      <ion-label floating>Claim Id</ion-label>
       <ion-input type="text" [(ngModel)]="claimData.id"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>Claim Name</ion-label>
+      <ion-label floating>Claim Name</ion-label>
       <ion-input type="text" [(ngModel)]="claimData.name"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>Category</ion-label>
+      <ion-label floating></ion-label>
       <ion-select [(ngModel)]="claimData.category">
-        <ion-option value="A">Type A</ion-option>
-        <ion-option value="B">Type B</ion-option>
-        <ion-option value="C">Type C</ion-option>
+        <ion-option value="A">Product</ion-option>
+        <ion-option value="B">Delivery</ion-option>
+        <ion-option value="C">Service</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
-  <button ion-button full color="success" (click)="newClaim()">New Claim</button>
+  <button ion-button full color="success" (click)="newClaim()">Confirm</button>
 </ion-content>

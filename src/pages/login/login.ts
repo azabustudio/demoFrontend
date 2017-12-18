@@ -43,6 +43,6 @@ export class Login {
   }
 
   register() {
-    this.navCtrl.setRoot(RegisterPage);
+    this.navCtrl.push(RegisterPage);
   }
 }

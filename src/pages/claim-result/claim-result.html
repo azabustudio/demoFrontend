@@ -15,10 +15,6 @@
     </ion-row>
   </ion-grid>
   <ion-list>
-    <ion-item>
-      <ion-label fixed>Claim Id</ion-label>
-      <ion-label >{{claimData.id}}</ion-label>
-    </ion-item>
 
     <ion-item>
       <ion-label fixed>Claim Name</ion-label>
@@ -29,6 +25,12 @@
       <ion-label fixed>Status</ion-label>
       <ion-label>{{status}}</ion-label>
     </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Claim Id</ion-label>
+      <ion-label>{{claimData.id}}</ion-label>
+    </ion-item>
+
   </ion-list>
   <button ion-button full color="success" (click)="backToList()">Back to Claim List</button>
 </ion-content>

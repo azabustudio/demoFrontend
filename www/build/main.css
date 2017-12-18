@@ -27979,3 +27979,7 @@ ion-navbar.toolbar {
 page-home [noScroll] {
   overflow: hidden;
 }
+
+.item {
+  padding: 0;
+}

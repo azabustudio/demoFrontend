@@ -13,20 +13,15 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-item>
+    <ion-label floating>Login id</ion-label>
+    <ion-input type="text" [(ngModel)]="userData.id"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
+  </ion-item>
 
-  <ion-list>
-    <ion-item>
-      <ion-label floating>Login id</ion-label>
-      <ion-input type="text" [(ngModel)]="userData.id"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
-    </ion-item>
-
-  </ion-list>
-
-  <button ion-button block full primary (click)="login()">Login</button>
-  <button ion-button block full color="secondary" (click)="register()">Regist Page</button>
+  <button ion-button full color="primary" (click)="login()">Login</button>
+  <button ion-button full color="lightprimary" (click)="register()">Register</button>
 </ion-content>
