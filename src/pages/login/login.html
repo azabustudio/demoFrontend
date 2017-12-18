@@ -16,16 +16,16 @@
 
   <ion-list>
     <ion-item>
-      <ion-label fixed>Login Id</ion-label>
+      <ion-label stacked>Login Id</ion-label>
       <ion-input type="text" [(ngModel)]="userData.id"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>Password</ion-label>
+      <ion-label stacked>Password</ion-label>
       <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
     </ion-item>
   </ion-list>
   
   <button ion-button block full color="success" (click)="login()">Login Page</button>
-
+  <button ion-button block full color="secondary" (click)="register()">Regist Page</button>
 </ion-content>
