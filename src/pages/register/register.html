@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="appBackground; no-scroll">
+	<ion-grid>
+	  <ion-row>
+	    <ion-col>
+	      <h1 align="">Welcome to our App</h1>
+        </ion-col>
+	  </ion-row>
+	</ion-grid>
+
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Regist Id</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input #password type="password" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Password Conform</ion-label>
+      <ion-input #passwordConfirm type="password" ></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button block full color="secondary" (click)="register()">Regist</button>
+</ion-content>

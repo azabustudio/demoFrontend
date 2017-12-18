@@ -122,19 +122,23 @@ webpackEmptyAsyncContext.id = 115;
 var map = {
 	"../pages/claim-detail/claim-detail.module": [
 		284,
-		5
+		1
 	],
 	"../pages/claim-list/claim-list.module": [
 		281,
-		8
+		10
 	],
 	"../pages/claim-result/claim-result.module": [
 		282,
-		7
+		9
 	],
 	"../pages/create-claim/create-claim.module": [
 		283,
-		6
+		2
+	],
+	"../pages/register/register.module": [
+		286,
+		0
 	]
 };
 function webpackAsyncContext(req) {
@@ -206,7 +210,7 @@ var Login = (function () {
     };
     Login = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"C:\Develop\claimDemo\demoFrontend\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      {{title}}\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding class="appBackground; no-scroll">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col>\n\n        <h1 align="">Welcome to our App</h1>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-label floating>Login id</ion-label>\n\n      <ion-input type="text" [(ngModel)]="userData.id"></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label floating>Password</ion-label>\n\n      <ion-input type="password" [(ngModel)]="userData.password"></ion-input>\n\n    </ion-item>\n\n\n\n  </ion-list>\n\n\n\n  <button ion-button block full primary (click)="login()">Login</button>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Develop\claimDemo\demoFrontend\src\pages\login\login.html"*/
+            selector: 'page-login',template:/*ion-inline-start:"C:\Develop\claimDemo\demoFrontend\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      {{title}}\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding class="appBackground; no-scroll">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col>\n\n        <h1 align="">Welcome to our App</h1>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-label floating>Login id</ion-label>\n\n      <ion-input type="text" [(ngModel)]="userData.id"></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-label floating>Password</ion-label>\n\n      <ion-input type="password" [(ngModel)]="userData.password"></ion-input>\n\n    </ion-item>\n\n\n\n  </ion-list>\n\n\n\n  <button ion-button block full primary (click)="login()">Login</button>\n\n  <button ion-button block full color="secondary" (click)="register()">Regist Page</button>\n\n</ion-content>'/*ion-inline-end:"C:\Develop\claimDemo\demoFrontend\src\pages\login\login.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3__providers_rest_rest__["a" /* RestProvider */],
@@ -250,14 +254,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_claim_result_claim_result__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_rest_rest__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_common_http__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_claim_detail_claim_detail__ = __webpack_require__(285);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -280,8 +282,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_6__pages_login_login__["a" /* Login */],
                 __WEBPACK_IMPORTED_MODULE_7__pages_claim_list_claim_list__["a" /* ClaimListPage */],
                 __WEBPACK_IMPORTED_MODULE_8__pages_create_claim_create_claim__["a" /* CreateClaimPage */],
-                __WEBPACK_IMPORTED_MODULE_9__pages_claim_result_claim_result__["a" /* ClaimResultPage */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_claim_detail_claim_detail__["a" /* ClaimDetailPage */]
+                __WEBPACK_IMPORTED_MODULE_9__pages_claim_result_claim_result__["a" /* ClaimResultPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -290,8 +291,7 @@ var AppModule = (function () {
                     links: [
                         { loadChildren: '../pages/claim-list/claim-list.module#ClaimListPageModule', name: 'ClaimListPage', segment: 'claim-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/claim-result/claim-result.module#ClaimResultPageModule', name: 'ClaimResultPage', segment: 'claim-result', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/create-claim/create-claim.module#CreateClaimPageModule', name: 'CreateClaimPage', segment: 'create-claim', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/claim-detail/claim-detail.module#ClaimDetailPageModule', name: 'ClaimDetailPage', segment: 'claim-detail', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/create-claim/create-claim.module#CreateClaimPageModule', name: 'CreateClaimPage', segment: 'create-claim', priority: 'low', defaultHistory: [] }
                     ]
                 }),
             ],
@@ -301,8 +301,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_6__pages_login_login__["a" /* Login */],
                 __WEBPACK_IMPORTED_MODULE_7__pages_claim_list_claim_list__["a" /* ClaimListPage */],
                 __WEBPACK_IMPORTED_MODULE_8__pages_create_claim_create_claim__["a" /* CreateClaimPage */],
-                __WEBPACK_IMPORTED_MODULE_9__pages_claim_result_claim_result__["a" /* ClaimResultPage */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_claim_detail_claim_detail__["a" /* ClaimDetailPage */]
+                __WEBPACK_IMPORTED_MODULE_9__pages_claim_result_claim_result__["a" /* ClaimResultPage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
@@ -366,53 +365,6 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 285:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClaimDetailPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the ClaimDetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ClaimDetailPage = (function () {
-    function ClaimDetailPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.claimDetail = navParams.get('data');
-    }
-    ClaimDetailPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ClaimDetailPage');
-    };
-    ClaimDetailPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-claim-detail',template:/*ion-inline-start:"C:\Develop\claimDemo\demoFrontend\src\pages\claim-detail\claim-detail.html"*/'<!--\n  Generated template for the ClaimDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{claimDetail.name}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\Develop\claimDemo\demoFrontend\src\pages\claim-detail\claim-detail.html"*/,
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
-    ], ClaimDetailPage);
-    return ClaimDetailPage;
-    var _a, _b;
-}());
-
-//# sourceMappingURL=claim-detail.js.map
-
-/***/ }),
-
 /***/ 50:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -421,7 +373,6 @@ var ClaimDetailPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_claim_create_claim__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__claim_detail_claim_detail__ = __webpack_require__(285);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -431,7 +382,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -441,26 +391,21 @@ var ClaimListPage = (function () {
         this.navParams = navParams;
         this.title = 'Claim List Screen';
         this.claims = [
-            { id: 11, name: 'Name A', status: 'In process', content: "This is a terrible product!" },
-            { id: 12, name: 'Name B', status: 'Closed', content: "Best product ever!" },
-            { id: 13, name: 'Name C', status: 'Pending', content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." }
+            { id: 11, name: 'Name A', status: 'In process' },
+            { id: 12, name: 'Name B', status: 'Closed' },
+            { id: 13, name: 'Name C', status: 'Pending' }
         ];
-        // TODO loadClaim from dynamoDB
     }
     ClaimListPage.prototype.createClaim = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__create_claim_create_claim__["a" /* CreateClaimPage */]);
-    };
-    ClaimListPage.prototype.openClaimDetail = function ($event, claimDetail) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__claim_detail_claim_detail__["a" /* ClaimDetailPage */], { data: claimDetail });
     };
     ClaimListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-claim-list',template:/*ion-inline-start:"C:\Develop\claimDemo\demoFrontend\src\pages\claim-list\claim-list.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      {{title}}\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="appBackground; no-scroll">\n\n  <!-- <ion-grid>\n\n    <ion-row>\n\n      <ion-col>\n\n        <h1 align="">Claim status list</h1>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n  <ion-list>\n\n    <ion-item style="background-color: #86b0f8">\n\n      <ion-label>ID</ion-label>\n\n      <ion-label>Name</ion-label>\n\n      <ion-label>Status</ion-label>\n\n    </ion-item>\n\n    <ion-item *ngFor="let claim of claims">\n\n      <ion-label>{{claim.id}}</ion-label>\n\n      <ion-label>{{claim.name}}</ion-label>\n\n      <ion-label>{{claim.status}}</ion-label>\n\n    </ion-item>\n\n  </ion-list> -->\n\n  <button ion-button full color="success" (click)="createClaim()">Create New Claim</button>\n\n\n\n  <ion-list>\n\n    <ion-item-sliding *ngFor="let claim of claims" (click)="openClaimDetail($event, claim)">\n\n      <ion-item>\n\n        <h2>{{claim.name}}</h2>\n\n        <p>{{claim.content}}</p>\n\n      </ion-item>\n\n      <ion-item-options side="right">\n\n        <button ion-button color="light">\n\n          <ion-icon name="cross"></ion-icon>\n\n          Delete\n\n        </button>\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n\n  </ion-list>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Develop\claimDemo\demoFrontend\src\pages\claim-list\claim-list.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], ClaimListPage);
     return ClaimListPage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=claim-list.js.map

@@ -5,11 +5,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+
+// 画面用コンポネント
 import { Login } from '../pages/login/login';
 import { ClaimListPage } from '../pages/claim-list/claim-list';
 import { CreateClaimPage } from '../pages/create-claim/create-claim';
 import { ClaimResultPage } from '../pages/claim-result/claim-result';
+import { RegisterPage } from '../pages/register/register';
+
+// ビジネスロジック
 import { RestProvider } from '../providers/rest/rest';
+
+// REST API 通信用。
 import { HttpClientModule } from '@angular/common/http';
 import { ClaimDetailPage } from '../pages/claim-detail/claim-detail';
 
@@ -21,6 +28,7 @@ import { ClaimDetailPage } from '../pages/claim-detail/claim-detail';
     CreateClaimPage,
     ClaimResultPage,
     ClaimDetailPage
+    RegisterPage,
   ],
   imports: [
     BrowserModule,
@@ -36,12 +44,12 @@ import { ClaimDetailPage } from '../pages/claim-detail/claim-detail';
     CreateClaimPage,
     ClaimResultPage,
     ClaimDetailPage
+    RegisterPage,
   ],
   providers: [
     StatusBar,
-    SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    HttpClientModule,
+    SplashScreen
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider
   ]
 })
