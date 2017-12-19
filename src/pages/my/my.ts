@@ -16,6 +16,7 @@ import { Login } from '../login/login';
 })
 export class MyPage {
 
+  name: string = localStorage.getItem('loginName');
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

@@ -28,10 +28,11 @@ var MyPage = (function () {
     function MyPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.name = localStorage.getItem('loginName');
     }
     MyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my',template:/*ion-inline-start:"C:\Develop\claimDemo\demoFrontend\src\pages\my\my.html"*/'<!--\n\n  Generated template for the MyPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title noScroll>My Page</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-card class="my-profile">\n\n    <ion-list no-lines>\n\n      <ion-item>\n\n        <ion-avatar item-start>\n\n          <img src="../../assets/avatars/testAvatar.png">\n\n        </ion-avatar>\n\n        <h2>My Page</h2>\n\n        <p>View</p>\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n\n\n  <ion-card class="myFunction">\n\n    <ion-list>\n\n      <button ion-item>\n\n        <ion-icon name="analytics" item-start></ion-icon>\n\n        My Analystics\n\n      </button>\n\n      <button ion-item>\n\n        <ion-icon name="mail" item-start></ion-icon>\n\n        My Notifications\n\n      </button>\n\n      <button ion-item>\n\n        <ion-icon name="help" item-start></ion-icon>\n\n        Help\n\n      </button>\n\n    </ion-list>\n\n  </ion-card>\n\n\n\n  <ion-card class="myFunction">\n\n    <ion-list>\n\n      <button ion-item>\n\n        <ion-icon name="log-out" item-start></ion-icon>\n\n        Logout\n\n      </button>\n\n    </ion-list>\n\n  </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Develop\claimDemo\demoFrontend\src\pages\my\my.html"*/,
+            selector: 'page-my',template:/*ion-inline-start:"C:\Develop\claimDemo\demoFrontend\src\pages\my\my.html"*/'<!--\n\n  Generated template for the MyPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title noScroll>My Page</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-card class="my-profile">\n\n    <ion-list no-lines>\n\n      <ion-item>\n\n        <ion-avatar item-start>\n\n          <img src="../../assets/avatars/testAvatar.png">\n\n        </ion-avatar>\n\n        <h2>{{name}}</h2>\n\n        <p>View</p>\n\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n\n\n  <ion-card class="myFunction">\n\n    <ion-list>\n\n      <button ion-item>\n\n        <ion-icon name="analytics" item-start></ion-icon>\n\n        My Analystics\n\n      </button>\n\n      <button ion-item>\n\n        <ion-icon name="mail" item-start></ion-icon>\n\n        My Notifications\n\n      </button>\n\n      <button ion-item>\n\n        <ion-icon name="help" item-start></ion-icon>\n\n        Help\n\n      </button>\n\n    </ion-list>\n\n  </ion-card>\n\n\n\n  <ion-card class="myFunction">\n\n    <ion-list>\n\n      <button ion-item>\n\n        <ion-icon name="log-out" item-start></ion-icon>\n\n        Logout\n\n      </button>\n\n    </ion-list>\n\n  </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Develop\claimDemo\demoFrontend\src\pages\my\my.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], MyPage);
@@ -353,23 +354,23 @@ var map = {
 		5
 	],
 	"../pages/create-claim/create-claim.module": [
-		292,
+		296,
 		4
 	],
 	"../pages/my/my.module": [
-		293,
+		292,
 		3
 	],
 	"../pages/register-confirm/register-confirm.module": [
-		294,
+		293,
 		0
 	],
 	"../pages/register/register.module": [
-		295,
+		294,
 		2
 	],
 	"../pages/search/search.module": [
-		296,
+		295,
 		1
 	]
 };
@@ -542,11 +543,11 @@ var AppModule = (function () {
                         { loadChildren: '../pages/claim-detail/claim-detail.module#ClaimDetailPageModule', name: 'ClaimDetailPage', segment: 'claim-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/claim-list/claim-list.module#ClaimListPageModule', name: 'ClaimListPage', segment: 'claim-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/claim-result/claim-result.module#ClaimResultPageModule', name: 'ClaimResultPage', segment: 'claim-result', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/create-claim/create-claim.module#CreateClaimPageModule', name: 'CreateClaimPage', segment: 'create-claim', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/my/my.module#MyPageModule', name: 'MyPage', segment: 'my', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register-confirm/register-confirm.module#RegisterConfirmPageModule', name: 'RegisterConfirmPage', segment: 'register-confirm', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/create-claim/create-claim.module#CreateClaimPageModule', name: 'CreateClaimPage', segment: 'create-claim', priority: 'low', defaultHistory: [] }
                     ]
                 }),
             ],
