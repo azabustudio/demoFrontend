@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 296:
+/***/ 294:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72,7 +72,7 @@ var RegisterConfirmPage = (function () {
     };
     RegisterConfirmPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-register-confirm',template:/*ion-inline-start:"E:\Develop\Workspace\demo\demoFrontend\src\pages\register-confirm\register-confirm.html"*/'<!--\n\n  Generated template for the RegisterConfirmPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>registerConfirm</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Develop\Workspace\demo\demoFrontend\src\pages\register-confirm\register-confirm.html"*/,
+            selector: 'page-register-confirm',template:/*ion-inline-start:"C:\Develop\claimDemo\demoFrontend\src\pages\register-confirm\register-confirm.html"*/'<!--\n  Generated template for the RegisterConfirmPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>registerConfirm</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\Develop\claimDemo\demoFrontend\src\pages\register-confirm\register-confirm.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], RegisterConfirmPage);

@@ -27980,12 +27980,17 @@ ion-title {
   text-align: center;
 }
 
-page-home [noScroll] {
-  overflow: hidden;
-}
-
 .item {
   padding: 0;
+}
+
+ion-list {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+ion-list button.button-md {
+  margin: 10px 0;
 }
 
 page-my ion-card {

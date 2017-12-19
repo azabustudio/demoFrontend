@@ -16,25 +16,25 @@
   <ion-list>
     <ion-item>
       <ion-label floating>Login id</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="registerInfo.loginName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="register.password"></ion-input>
+      <ion-input type="password" [(ngModel)]="registerInfo.password"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password confirm</ion-label>
-      <ion-input type="password" [(ngModel)]="register.passwordConfirm"></ion-input>
+      <ion-input type="password" [(ngModel)]="registerInfo.passwordConfirm"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Last name</ion-label>
-      <ion-input type="text" [(ngModel)]="register.lastName"></ion-input>
+      <ion-input type="text" [(ngModel)]="registerInfo.lastName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>First name</ion-label>
-      <ion-input type="text" [(ngModel)]="register.lastName"></ion-input>
+      <ion-input type="text" [(ngModel)]="registerInfo.firstName"></ion-input>
     </ion-item>
 
 

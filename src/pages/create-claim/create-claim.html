@@ -33,6 +33,11 @@
         <ion-option value="C">Service</ion-option>
       </ion-select>
     </ion-item>
+
+    <ion-item>
+      <ion-label floating>Claim Content</ion-label>
+      <ion-textarea [(ngModel)]="claimData.content"></ion-textarea>
+    </ion-item>
   </ion-list>
   <button ion-button full color="success" (click)="newClaim()">Confirm</button>
 </ion-content>

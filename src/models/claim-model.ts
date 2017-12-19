@@ -3,10 +3,8 @@ export class Claim {
     name: string;
     status: string;
     content: string;
-    category: string;
+    category: string = 'A';
+    loginName: string;
 
-    constructor() {
-        this.category = 'A';
-    }
 }
 

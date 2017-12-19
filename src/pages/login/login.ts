@@ -7,6 +7,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { RegisterPage } from '../register/register';
 import { ActionSheetController } from 'ionic-angular'
 import { TabsPage } from '../tabs/tabs';
+import { User } from '../../models/user-model';
 
 @Component({
   selector: 'page-login',
@@ -24,9 +25,11 @@ export class Login {
   }
 
   login() {
+    console.log('starting login');
     this.restProvider.login(this.userData.id, this.userData.password)
       .then(data => {
         if ((data as any).status === "success") {
+          localStorage.setItem('loginName', this.userData.id);
           this.navCtrl.setRoot(TabsPage);
         } else {
           this.presentAlert()
@@ -44,6 +47,6 @@ export class Login {
   }
 
   register() {
-    this.navCtrl.push(TabsPage);
+    this.navCtrl.push(RegisterPage);
   }
 }
