@@ -7,8 +7,8 @@ import { User } from '../../models/user-model';
 export class RestProvider {
 
   // TODO: Need to modify after AWS instance setting up.
-  // apiUrl = 'http://18.217.228.115/';
-  apiUrl: string = 'http://localhost:8080/';
+  apiUrl = 'http://18.217.228.115/';
+  // apiUrl: string = 'http://localhost:8080/';
 
   constructor(public http: HttpClient) {
   }
