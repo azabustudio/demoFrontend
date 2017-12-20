@@ -5,6 +5,5 @@ export class Claim {
     content: string;
     category: string = 'A';
     loginName: string;
-
 }
 

@@ -1,8 +1,10 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      {{title}}
-    </ion-title>
+    <ion-segment [(ngModel)]="showType">
+      <ion-segment-button *ngFor="let status of statusList" value="{{status}}">
+        {{status}}
+      </ion-segment-button>
+    </ion-segment>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="createClaim()">
@@ -10,23 +12,37 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+
+
 </ion-header>
 
 <ion-content padding class="appBackground;">
-  <ion-list>
-    <ion-item-sliding *ngFor="let claim of claims" (click)="openClaimDetail($event, claim)">
-      <ion-item>
-        <h2>{{claim.name}}</h2>
-        <p>{{claim.content}}</p>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="light">
-          <ion-icon name="cross"></ion-icon>
-          Delete
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
 
+  <!-- <template ngFor status [ngForOf]="statusList">
+    {{status}}
+  </template>
+  <div [ngSwitch]="showType">
+
+    <ion-list *ngSwitchCase="{{status}}">
+      <ion-item-sliding *ngFor="let claim of claims" (click)="openClaimDetail($event, claim)">
+        <ion-item>
+          <h2>{{claim.name}}</h2>
+          <p>{{claim.content}}</p>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary">
+            <ion-icon name="cross"></ion-icon>
+            EDIT
+          </button>
+
+          <button ion-button color="lightprimary">
+            <ion-icon name="cross"></ion-icon>
+            CLOSE
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+  </div> -->
 
 </ion-content>

@@ -4,6 +4,7 @@ import { CreateClaimPage } from '../create-claim/create-claim';
 import { ClaimDetailPage } from '../claim-detail/claim-detail';
 import { Claim } from '../../models/claim-model';
 import { RestProvider } from '../../providers/rest/rest';
+import { Status } from '../../models/status-model';
 
 
 @IonicPage()
@@ -12,15 +13,18 @@ import { RestProvider } from '../../providers/rest/rest';
   templateUrl: 'claim-list.html',
 })
 export class ClaimListPage {
-  title = 'Claim List Screen';
   claims: Claim[];
+  statusList: string[];
+  showType: string = 'processing';
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     rest: RestProvider) {
     // If absent, use ray
     let loginName = localStorage.getItem('loginName') || 'ray';
+    this.statusList = Object.keys(Status).map(k => Status[k]);
 
+    console.log(this.statusList);
     rest.getClaimList(loginName)
       .then((res: { status: string, content: Claim[] }) => this.claims = res.content)
       .catch(err => console.error(err));
