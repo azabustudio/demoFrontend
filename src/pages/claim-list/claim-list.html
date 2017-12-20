@@ -18,31 +18,30 @@
 
 <ion-content padding class="appBackground;">
 
-  <!-- <template ngFor status [ngForOf]="statusList">
-    {{status}}
-  </template>
   <div [ngSwitch]="showType">
 
-    <ion-list *ngSwitchCase="{{status}}">
-      <ion-item-sliding *ngFor="let claim of claims" (click)="openClaimDetail($event, claim)">
-        <ion-item>
-          <h2>{{claim.name}}</h2>
-          <p>{{claim.content}}</p>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="primary">
-            <ion-icon name="cross"></ion-icon>
-            EDIT
-          </button>
+    <ng-template ngFor let-status [ngForOf]="statusList">
+      <ion-list *ngSwitchCase="status">
+        <ion-item-sliding *ngFor="let claim of claims | statusFilter: status" (click)="openClaimDetail($event, claim)">
+          <ion-item>
+            <h2>{{claim.name}}</h2>
+            <p>{{claim.content}}</p>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button color="primary">
+              <ion-icon name="cross"></ion-icon>
+              EDIT
+            </button>
 
-          <button ion-button color="lightprimary">
-            <ion-icon name="cross"></ion-icon>
-            CLOSE
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
+            <button ion-button color="lightprimary">
+              <ion-icon name="cross"></ion-icon>
+              CLOSE
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ng-template>
 
-  </div> -->
+  </div>
 
 </ion-content>

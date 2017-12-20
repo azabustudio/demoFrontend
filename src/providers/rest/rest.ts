@@ -1,14 +1,15 @@
+import { Claim } from './../../models/claim-model';
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { Claim } from '../../models/claim-model';
 import { User } from '../../models/user-model';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from "rxjs/Subject";
 
 @Injectable()
 export class RestProvider {
 
   // TODO: Need to modify after AWS instance setting up.
-  apiUrl = 'http://18.217.228.115/';
-  // apiUrl: string = 'http://localhost:8080/';
+  apiUrl: string = 'http://localhost:8080/';
 
   constructor(public http: HttpClient) {
   }

@@ -1,33 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CreateClaimPage } from '../create-claim/create-claim';
 import { ClaimDetailPage } from '../claim-detail/claim-detail';
 import { Claim } from '../../models/claim-model';
 import { RestProvider } from '../../providers/rest/rest';
 import { Status } from '../../models/status-model';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 
 @IonicPage()
 @Component({
   selector: 'page-claim-list',
-  templateUrl: 'claim-list.html',
+  templateUrl: 'claim-list.html'
 })
 export class ClaimListPage {
-  claims: Claim[];
+  claims: Claim[] = [];
   statusList: string[];
-  showType: string = 'processing';
+  showType: Status = Status.PROCESSING;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    rest: RestProvider) {
+    public rest: RestProvider,
+    public loadingCtrl: LoadingController) {
     // If absent, use ray
+    this.initData();
+  }
+
+  initData() {
     let loginName = localStorage.getItem('loginName') || 'ray';
     this.statusList = Object.keys(Status).map(k => Status[k]);
 
-    console.log(this.statusList);
-    rest.getClaimList(loginName)
-      .then((res: { status: string, content: Claim[] }) => this.claims = res.content)
+    let loading = this.loadingCtrl.create({
+      spinner: 'dots',
+      showBackdrop: true,
+      content: 'Loading...'
+    });
+    loading.present();
+    this.rest.getClaimList(loginName)
+      .then((res: { status: string, content: Claim[] }) => {
+        this.claims = res.content;
+        loading.dismiss();
+      })
       .catch(err => console.error(err));
+
   }
 
   createClaim() {

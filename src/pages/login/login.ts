@@ -1,3 +1,5 @@
+import { App } from 'ionic-angular/components/app/app';
+import { MyApp } from './../../app/app.component';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -20,8 +22,13 @@ export class Login {
   constructor(
     public navCtrl: NavController,
     public restProvider: RestProvider,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private app: App) {
+    this.bindingEvents();
+  }
 
+  bindingEvents() {
+    this.events.subscribe('logout', _ => this.app.getRootNav().setRoot(Login));
   }
 
   login() {

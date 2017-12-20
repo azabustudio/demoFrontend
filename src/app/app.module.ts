@@ -1,3 +1,4 @@
+import { StatusFilterPipe } from './../pipes/status-filter/status-filter';
 import { MyPage } from './../pages/my/my';
 import { SearchPage } from './../pages/search/search';
 import { BrowserModule } from '@angular/platform-browser';
@@ -34,7 +35,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     RegisterPage,
     TabsPage,
     SearchPage,
-    MyPage
+    MyPage,
+    StatusFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    RestProvider
+    RestProvider,
+    StatusFilterPipe
   ]
 })
 export class AppModule { }
