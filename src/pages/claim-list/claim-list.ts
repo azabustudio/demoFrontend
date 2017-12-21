@@ -32,7 +32,7 @@ export class ClaimListPage {
 
     let loading = this.loadingCtrl.create({
       spinner: 'dots',
-      showBackdrop: true,
+      showBackdrop: false,
       content: 'Loading...'
     });
     loading.present();

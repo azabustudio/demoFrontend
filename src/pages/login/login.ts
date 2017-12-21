@@ -28,7 +28,7 @@ export class Login {
   }
 
   bindingEvents() {
-    this.events.subscribe('logout', _ => this.app.getRootNav().setRoot(Login));
+    // this.events.subscribe('logout', _ => this.app.getRootNav().setRoot(Login));
   }
 
   login() {

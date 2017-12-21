@@ -1,4 +1,3 @@
-import { Login } from './../login/login';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Login } from '../login/login';
@@ -29,14 +28,14 @@ export class MyPage {
   }
 
   logout() {
-    let loading = this.loadingCtrl.create({
-      spinner: 'dots',
-      content: 'Loging out...'
-    });
-    loading.present();
+    // let loading = this.loadingCtrl.create({
+    //   spinner: 'dots',
+    //   content: 'Loging out...'
+    // });
+    // loading.present();
 
-    let subject = new Subject();
-    localStorage.removeItem('loginName');
+    // let subject = new Subject();
+    // localStorage.removeItem('loginName');
     // subject.subscribe(() => {
     //   loading.dismiss();
     // });

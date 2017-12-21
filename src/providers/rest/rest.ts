@@ -9,6 +9,7 @@ import { Subject } from "rxjs/Subject";
 export class RestProvider {
 
   // TODO: Need to modify after AWS instance setting up.
+  // apiUrl: string = 'http://18.217.228.115/';
   apiUrl: string = 'http://localhost:8080/';
 
   constructor(public http: HttpClient) {
