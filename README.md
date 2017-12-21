@@ -16,5 +16,3 @@ Install node modules.<br>
 Start the iOS and andorid simulator: <br>
 (The ionic server listens to the port `8100` at default.)<br>
 ```ionic serve --lab```
-
-
