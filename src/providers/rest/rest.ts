@@ -52,6 +52,33 @@ export class RestProvider {
     });
   }
 
+  removeClaim(claimId: number) {
+    let requestUrl = this.apiUrl + 'removeClaim?claimId=' + claimId;
+    return new Promise(resolve => {
+      console.log('requesting:' + requestUrl);
+      this.http.get(requestUrl)
+        .subscribe(data => resolve(data), err => console.error(err));
+    });
+  }
+
+  updateClaim(claim: Claim) {
+    let requestUrl = this.apiUrl + 'updateClaim';
+    return new Promise(resolve => {
+      console.log('requesting:' + requestUrl);
+      this.http.post(requestUrl, claim)
+        .subscribe(data => resolve(data), err => console.error(err));
+    });
+  }
+
+  closeClaim(claimId) {
+    let requestUrl = this.apiUrl + 'closeClaim?claimId=' + claimId;
+    return new Promise(resolve => {
+      console.log('requesting:' + requestUrl);
+      this.http.get(requestUrl)
+        .subscribe(data => resolve(data), err => console.error(err));
+    });
+  }
+
   register(user: User) {
     let requestUrl = this.apiUrl + 'addUser';
     return new Promise(resolve => {

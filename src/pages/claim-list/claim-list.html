@@ -28,20 +28,15 @@
             <p>{{claim.content}}</p>
           </ion-item>
           <ion-item-options side="right">
-            <button ion-button color="primary">
-              <ion-icon name="cross"></ion-icon>
-              EDIT
-            </button>
-
-            <button ion-button color="lightprimary">
-              <ion-icon name="cross"></ion-icon>
-              CLOSE
-            </button>
+            <ng-template ngFor let-button [ngForOf]="actionButtons">
+              <button ion-button *ngIf="button.option.statusList.indexOf(status) !== -1" color="{{button.option.style}}" (click)="button.action.call(this, $event, claim)">
+                <ion-icon name="{{button.option.icon}}"></ion-icon>
+              </button>
+            </ng-template>
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>
     </ng-template>
-
   </div>
 
 </ion-content>

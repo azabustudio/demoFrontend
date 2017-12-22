@@ -14,7 +14,7 @@ import { ClaimListPage } from '../pages/claim-list/claim-list';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = Login;
+  rootPage: any = ClaimListPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
