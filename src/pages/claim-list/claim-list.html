@@ -23,7 +23,7 @@
     <ng-template ngFor let-status [ngForOf]="statusList">
       <ion-list *ngSwitchCase="status">
         <ion-item-sliding *ngFor="let claim of claims | statusFilter: status" (click)="openClaimDetail($event, claim)">
-          <ion-item>
+          <ion-item class="item-remove-animation">
             <h2>{{claim.name}}</h2>
             <p>{{claim.content}}</p>
           </ion-item>
@@ -37,6 +37,7 @@
         </ion-item-sliding>
       </ion-list>
     </ng-template>
+
   </div>
 
 </ion-content>

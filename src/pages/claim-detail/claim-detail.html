@@ -7,18 +7,32 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{claimDetail.name}}</ion-title>
+    <ion-title center>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding noScroll>
-  <ion-card>
+<ion-content padding>
 
-    <ion-card-content>
-      {{claimDetail.content}}
-    </ion-card-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Claim Name</ion-label>
+      <ion-input type="text" [(ngModel)]="claim.name"></ion-input>
+    </ion-item>
 
-  </ion-card>
-  <button (click)="edit(claimDetail)"></button>
+    <ion-item>
+      <ion-label floating></ion-label>
+      <ion-select [(ngModel)]="claim.category">
+        <ion-option value="A">Product</ion-option>
+        <ion-option value="B">Delivery</ion-option>
+        <ion-option value="C">Service</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Claim Content</ion-label>
+      <ion-textarea [(ngModel)]="claim.content"></ion-textarea>
+    </ion-item>
+    <button ion-button full (click)="edit()">Confirm Edit</button>
+  </ion-list>
 </ion-content>

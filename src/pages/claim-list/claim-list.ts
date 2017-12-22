@@ -28,12 +28,56 @@ export class ClaimListPage {
     this.initData();
   }
 
+  initData() {
+    let loginName = localStorage.getItem('loginName') || 'ray';
+    this.statusList = Object.keys(Status).map(k => Status[k]);
+    this.initActionButtons();
+
+    let loading = this.loadingCtrl.create({
+      spinner: 'dots',
+      showBackdrop: false,
+      content: 'Loading...'
+    });
+    loading.present();
+    this.rest.getClaimList(loginName)
+      .then((res: { status: string, content: Claim[] }) => {
+        this.claims = res.content;
+        loading.dismiss();
+      })
+      .catch(err => console.error(err));
+  }
+
+  initActionButtons() {
+    let editButton = new ActionButton('EDIT', this.goToEdit, {
+      statusList: [Status.PROCESSING],
+      style: 'primary',
+      icon: 'hammer'
+    });
+    let closeButton = new ActionButton('CLOSE', this.close, {
+      statusList: [Status.PROCESSING, Status.PENDING],
+      style: 'success',
+      icon: 'checkmark'
+    });
+    let hideButton = new ActionButton('HIDE', this.hide, {
+      statusList: [Status.CLOSED],
+      style: 'lightprimary',
+      icon: 'trash'
+    });
+    let openButton = new ActionButton('OPEN', this.open, {
+      statusList: [Status.CLOSED, Status.PENDING],
+      style: 'primary',
+      icon: 'eye'
+    });
+
+    this.actionButtons = [editButton, closeButton, openButton, hideButton];
+  }
+
   createClaim() {
     this.navCtrl.push(CreateClaimPage);
   }
 
-  openClaimDetail($event, claimDetail) {
-    this.navCtrl.push(ClaimDetailPage, { data: claimDetail });
+  openClaimDetail($event, claim) {
+    this.navCtrl.push(ClaimDetailPage, { data: claim });
   }
 
   /**
@@ -58,42 +102,20 @@ export class ClaimListPage {
    * @param claim
    */
   close($event: any, claim: Claim) {
-    this.rest.closeClaim(claim.id);
+    $event.stopPropagation();
+    claim.status = 'closed';
+    this.rest.updateClaimStatus(claim.id, 'closed');
   }
 
-  initData() {
-    let loginName = localStorage.getItem('loginName') || 'ray';
-    this.statusList = Object.keys(Status).map(k => Status[k]);
-    let editButton = new ActionButton('EDIT', this.goToEdit, {
-      statusList: [Status.PROCESSING],
-      style: 'primary',
-      icon: 'hammer'
-    });
-    let closeButton = new ActionButton('CLOSE', this.close, {
-      statusList: [Status.PROCESSING, Status.PENDING],
-      style: 'light',
-      icon: 'trash'
-    });
-    let hideButton = new ActionButton('HIDE', this.hide, {
-      statusList: [Status.CLOSED],
-      style: 'lightprimary',
-      icon: 'eye\-off'
-    });
-    this.actionButtons = [editButton, closeButton, hideButton];
-
-    let loading = this.loadingCtrl.create({
-      spinner: 'dots',
-      showBackdrop: false,
-      content: 'Loading...'
-    });
-    loading.present();
-    this.rest.getClaimList(loginName)
-      .then((res: { status: string, content: Claim[] }) => {
-        this.claims = res.content;
-        loading.dismiss();
-      })
-      .catch(err => console.error(err));
-
+  /**
+   * set claim to processing
+   * @param
+   * @param claim
+   */
+  open($event: any, claim: Claim) {
+    $event.stopPropagation();
+    claim.status = 'processing';
+    this.rest.updateClaimStatus(claim.id, 'processing');
   }
 
   show(action: any) {

@@ -1,3 +1,5 @@
+import { Claim } from './../../models/claim-model';
+import { RestProvider } from './../../providers/rest/rest';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -14,15 +16,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'claim-detail.html',
 })
 export class ClaimDetailPage {
+  title: string = 'Edit Claim'
+  claim: Claim = new Claim();
 
-  claimDetail: any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.claimDetail = navParams.get('data');
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public rest: RestProvider) {
+    this.claim = navParams.get('data');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClaimDetailPage');
   }
 
+  edit() {
+    this.rest.updateClaim(this.claim)
+      .then(_ => this.navCtrl.goToRoot(null),
+      err => console.error(err));
+  }
 }

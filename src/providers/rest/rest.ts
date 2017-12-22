@@ -65,13 +65,15 @@ export class RestProvider {
     let requestUrl = this.apiUrl + 'updateClaim';
     return new Promise(resolve => {
       console.log('requesting:' + requestUrl);
+      console.log(claim);
       this.http.post(requestUrl, claim)
         .subscribe(data => resolve(data), err => console.error(err));
     });
   }
 
-  closeClaim(claimId) {
-    let requestUrl = this.apiUrl + 'closeClaim?claimId=' + claimId;
+  updateClaimStatus(claimId: number, status: string) {
+    let requestUrl = this.apiUrl + 'updateClaimStatus?claimId=' + claimId
+      + '&status=' + status;
     return new Promise(resolve => {
       console.log('requesting:' + requestUrl);
       this.http.get(requestUrl)
