@@ -1,7 +1,7 @@
 import { Claim } from './../../models/claim-model';
 import { ActionButton } from './../../models/action-button-model';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { CreateClaimPage } from '../create-claim/create-claim';
 import { ClaimDetailPage } from '../claim-detail/claim-detail';
 import { RestProvider } from '../../providers/rest/rest';
@@ -16,27 +16,26 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 })
 export class ClaimListPage {
   claims: Claim[] = [];
-  statusList: string[];
+  statusList: string[] = Object.keys(Status).map(k => Status[k]);
   showType: Status = Status.PROCESSING;
   actionButtons: ActionButton[];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public rest: RestProvider,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController) {
     // If absent, use ray
-    this.initData();
   }
 
   initData() {
     let loginName = localStorage.getItem('loginName') || 'ray';
-    this.statusList = Object.keys(Status).map(k => Status[k]);
     this.initActionButtons();
 
     let loading = this.loadingCtrl.create({
       spinner: 'dots',
-      showBackdrop: false,
-      content: 'Loading...'
+      showBackdrop: true,
+      content: 'Loading claims...'
     });
     loading.present();
     this.rest.getClaimList(loginName)
@@ -56,20 +55,29 @@ export class ClaimListPage {
     let closeButton = new ActionButton('CLOSE', this.close, {
       statusList: [Status.PROCESSING, Status.PENDING],
       style: 'success',
-      icon: 'checkmark'
+      icon: 'square'
     });
-    let hideButton = new ActionButton('HIDE', this.hide, {
-      statusList: [Status.CLOSED],
-      style: 'lightprimary',
-      icon: 'trash'
-    });
+    // let hideButton = new ActionButton('HIDE', this.hide, {
+    //   statusList: [Status.CLOSED],
+    //   style: 'lightprimary',
+    //   icon: 'trash'
+    // });
     let openButton = new ActionButton('OPEN', this.open, {
       statusList: [Status.CLOSED, Status.PENDING],
       style: 'primary',
-      icon: 'eye'
+      icon: 'play'
+    });
+    let deactivateButton = new ActionButton('DEACTIVATE', this.deactivate, {
+      statusList: [Status.CLOSED],
+      style: 'lightprimary',
+      icon: 'eye-off'
     });
 
-    this.actionButtons = [editButton, closeButton, openButton, hideButton];
+    this.actionButtons = [editButton, closeButton, openButton, deactivateButton];
+  }
+
+  ionViewWillEnter() {
+    this.initData();
   }
 
   createClaim() {
@@ -103,8 +111,23 @@ export class ClaimListPage {
    */
   close($event: any, claim: Claim) {
     $event.stopPropagation();
-    claim.status = 'closed';
-    this.rest.updateClaimStatus(claim.id, 'closed');
+    let confirm = this.alertCtrl.create({
+      title: 'Close Confirmation',
+      message: 'Are you sure to close this claim?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: _ => {
+            claim.status = 'closed';
+            this.rest.updateClaimStatus(claim.id, 'closed');
+          }
+        },
+        {
+          text: 'No'
+        }
+      ]
+    });
+    confirm.present();
   }
 
   /**
@@ -114,8 +137,44 @@ export class ClaimListPage {
    */
   open($event: any, claim: Claim) {
     $event.stopPropagation();
-    claim.status = 'processing';
-    this.rest.updateClaimStatus(claim.id, 'processing');
+    let confirm = this.alertCtrl.create({
+      title: 'Open Confirmation',
+      message: 'Are you sure to open this claim?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: _ => {
+            claim.status = 'processing';
+            this.rest.updateClaimStatus(claim.id, 'processing');
+          }
+        },
+        {
+          text: 'No'
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  deactivate($event: any, claim: Claim) {
+    $event.stopPropagation();
+    let confirm = this.alertCtrl.create({
+      title: 'Hide Confirmation',
+      message: 'Are you sure to hide this claim?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: _ => {
+            claim.active = false;
+            this.rest.activateClaim(claim.id, false);
+          }
+        },
+        {
+          text: 'No'
+        }
+      ]
+    });
+    confirm.present();
   }
 
   show(action: any) {

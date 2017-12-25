@@ -5,4 +5,5 @@ export class Claim {
     content: string;
     category: string = 'A';
     loginName: string;
+    active: Boolean;
 }

@@ -2,6 +2,7 @@ import { Claim } from './../../models/claim-model';
 import { RestProvider } from './../../providers/rest/rest';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 /**
  * Generated class for the ClaimDetailPage page.
@@ -18,10 +19,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ClaimDetailPage {
   title: string = 'Edit Claim'
   claim: Claim = new Claim();
+  originClaim: Claim = new Claim();
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public rest: RestProvider) {
+    public rest: RestProvider,
+    public loadingCtrl: LoadingController) {
     this.claim = navParams.get('data');
   }
 
@@ -30,8 +33,15 @@ export class ClaimDetailPage {
   }
 
   edit() {
+    let loading = this.loadingCtrl.create({
+      content: 'Loading...',
+      dismissOnPageChange: true
+    });
+    loading.present();
     this.rest.updateClaim(this.claim)
-      .then(_ => this.navCtrl.goToRoot(null),
+      .then(_ => {
+        this.navCtrl.goToRoot(null);
+      },
       err => console.error(err));
   }
 }

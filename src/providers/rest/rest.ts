@@ -81,6 +81,16 @@ export class RestProvider {
     });
   }
 
+  activateClaim(claimId: number, active: boolean) {
+    let requestUrl = this.apiUrl + 'activateClaim?claimId=' + claimId
+      + '&active=' + active;
+    return new Promise(resolve => {
+      console.log('requesting:' + requestUrl);
+      this.http.get(requestUrl)
+        .subscribe(data => resolve(data), err => console.error(err));
+    });
+  }
+
   register(user: User) {
     let requestUrl = this.apiUrl + 'addUser';
     return new Promise(resolve => {

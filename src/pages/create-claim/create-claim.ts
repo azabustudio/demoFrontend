@@ -30,10 +30,10 @@ export class CreateClaimPage {
     this.claimData.loginName = localStorage.getItem('loginName');
     loading.present();
     this.rest.addClaim(this.claimData)
-      .then(res => {
+      .then((res: { status: string, claim: Claim }) => {
         console.log(res);
         loading.dismiss();
-        this.navCtrl.setRoot(ClaimResultPage, { claim: this.claimData });
+        this.navCtrl.setRoot(ClaimResultPage, { claim: res.claim });
       });
   }
 

@@ -16,6 +16,6 @@ export class StatusFilterPipe implements PipeTransform {
    * Takes an array of claims and a status to filter
    */
   transform(claims: Claim[], status: Status): Claim[] {
-    return claims.filter(claim => claim.status === status);
+    return claims.filter(claim => claim.status === status && claim.active === true);
   }
 }
