@@ -35,8 +35,8 @@ export class RegisterPage {
       ])),
       password: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(6),
+        Validators.minLength(6),
+        Validators.maxLength(10),
         Validators.pattern(reg)
       ])),
       passwordConfirm: new FormControl('', Validators.compose([
