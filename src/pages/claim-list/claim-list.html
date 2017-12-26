@@ -30,7 +30,8 @@
           <ion-item-options side="right">
             <ng-template ngFor let-button [ngForOf]="actionButtons">
               <button ion-button *ngIf="button.option.statusList.indexOf(status) !== -1" color="{{button.option.style}}" (click)="button.action.call(this, $event, claim)">
-                <ion-icon name="{{button.option.icon}}"></ion-icon>
+                <!-- <ion-icon name="{{button.option.icon}}"></ion-icon> -->
+                {{button.buttonName}}
               </button>
             </ng-template>
           </ion-item-options>

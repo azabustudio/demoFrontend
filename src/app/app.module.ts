@@ -23,6 +23,7 @@ import { RestProvider } from '../providers/rest/rest';
 // REST API 通信用。
 import { HttpClientModule } from '@angular/common/http';
 import { TabsPage } from '../pages/tabs/tabs';
+import { EqualValidator } from '../directives/equal-validator/equal-validator';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     TabsPage,
     SearchPage,
     MyPage,
-    StatusFilterPipe
+    StatusFilterPipe,
+    EqualValidator
   ],
   imports: [
     BrowserModule,

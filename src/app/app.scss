@@ -13,9 +13,13 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 .no-scroll .scroll-content {
-    overflow: hidden!important;
+  overflow: hidden!important;
 }
 
 ion-title {
-    text-align: center;
+  text-align: center;
+}
+
+p[color=danger] {
+  font-size: 1rem;
 }

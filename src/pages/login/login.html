@@ -14,18 +14,31 @@
     </ion-row>
   </ion-grid>
 
-  <ion-list>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+    <ion-list>
 
-    <ion-item>
-      <ion-label floating>Login id</ion-label>
-      <ion-input type="text" [(ngModel)]="userData.id"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Login Name</ion-label>
+        <ion-input type="text" name="loginName" formControlName="loginName"></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="formErrors.loginName.length">
+        <p ion-text color="danger" *ngFor="let errors of formErrors.loginName">
+          {{errors}}
+        </p>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="formErrors.password.length">
+        <p ion-text color="danger" *ngFor="let errors of formErrors.password">
+          {{errors}}
+        </p>
+      </ion-item>
+      <button type="submit" ion-button full block [disabled]="!formGroup.valid">Login</button>
+      <!-- <button ion-button full color="primary" (click)="login()">Login</button> -->
+      <button type="button" ion-button full color="lightprimary" (click)="register()">Register</button>
+    </ion-list>
 
-    <button ion-button full color="primary" (click)="login()">Login</button>
-    <button ion-button full color="lightprimary" (click)="register()">Register</button>
-  </ion-list>
+  </form>
 </ion-content>

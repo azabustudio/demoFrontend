@@ -1,9 +1,9 @@
+import { ClaimDetailPage } from './../claim-detail/claim-detail';
 import { Claim } from './../../models/claim-model';
 import { ActionButton } from './../../models/action-button-model';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { CreateClaimPage } from '../create-claim/create-claim';
-import { ClaimDetailPage } from '../claim-detail/claim-detail';
 import { RestProvider } from '../../providers/rest/rest';
 import { Status } from '../../models/status-model';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
@@ -52,6 +52,12 @@ export class ClaimListPage {
       style: 'primary',
       icon: 'hammer'
     });
+    let pendButton = new ActionButton('PEND', this.pend, {
+      statusList: [Status.PROCESSING],
+      style: 'energy',
+      icon: 'hand'
+    });
+
     let closeButton = new ActionButton('CLOSE', this.close, {
       statusList: [Status.PROCESSING, Status.PENDING],
       style: 'success',
@@ -73,7 +79,7 @@ export class ClaimListPage {
       icon: 'eye-off'
     });
 
-    this.actionButtons = [editButton, closeButton, openButton, deactivateButton];
+    this.actionButtons = [editButton, closeButton, openButton, pendButton, deactivateButton];
   }
 
   ionViewWillEnter() {
@@ -93,7 +99,10 @@ export class ClaimListPage {
    * @param
    * @param claim
    */
-  goToEdit($event, claim: Claim) { }
+  goToEdit($event, claim: Claim) {
+    $event.stopPropagation();
+    this.navCtrl.push(ClaimDetailPage, { data: claim });
+  }
 
   /**
    * remove claim
@@ -131,6 +140,33 @@ export class ClaimListPage {
   }
 
   /**
+   * set claim to closed
+   * @param
+   * @param claim
+   */
+  pend($event: any, claim: Claim) {
+    $event.stopPropagation();
+    let confirm = this.alertCtrl.create({
+      title: 'Pend Confirmation',
+      message: 'Are you sure to pend this claim?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: _ => {
+            claim.status = 'pending';
+            this.rest.updateClaimStatus(claim.id, 'pending');
+          }
+        },
+        {
+          text: 'No'
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+
+  /**
    * set claim to processing
    * @param
    * @param claim
@@ -155,6 +191,8 @@ export class ClaimListPage {
     });
     confirm.present();
   }
+
+
 
   deactivate($event: any, claim: Claim) {
     $event.stopPropagation();

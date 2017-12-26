@@ -47,7 +47,7 @@ $colors: ( primary: #488aff, secondary: #32db64, danger: #f53d3d, light: #f4f4f4
 // --------------------------------------------------
 @import "roboto";
 @import "noto-sans";
-$colors: ( primary: #488aff, secondary: #677077, lightprimary: #B5B5B7, light: #e91d1d, dark: #222, energy: #f2b632, success:lightgreen);
+$colors: ( primary: #488aff, secondary: #677077, lightprimary: #B5B5B7, light: #e91d1d, dark: #222, energy: #f2b632, success:lightgreen, danger:red);
 $toolbar-background: color($colors, primary);
 $tabs-md-tab-min-height:(5rem);
 $content-padding: 0px;

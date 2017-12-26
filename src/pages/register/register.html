@@ -13,31 +13,48 @@
     </ion-row>
   </ion-grid>
 
-  <ion-list>
-    <ion-item>
-      <ion-label floating>Login id</ion-label>
-      <ion-input type="text" [(ngModel)]="registerInfo.loginName"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="registerInfo.password"></ion-input>
-    </ion-item>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Login Name</ion-label>
+        <ion-input type="text" name="loginName" formControlName="loginName"></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="formErrors.loginName.length">
+        <p ion-text color="danger" *ngFor="let errors of formErrors.loginName">
+          {{errors}}
+        </p>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" name="password" formControlName="password" validateEqual="passwordConfirm" reverse="true"></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="formErrors.password.length">
+        <p ion-text color="danger" *ngFor="let errors of formErrors.password">
+          {{errors}}
+        </p>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Password confirm</ion-label>
-      <ion-input type="password" [(ngModel)]="registerInfo.passwordConfirm"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Password Confirm</ion-label>
+        <ion-input type="password" name="passwordConfirm" formControlName="passwordConfirm" validateEqual="password" reverse="false"></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="formErrors.passwordConfirm.length">
+        <p ion-text color="danger" *ngFor="let errors of formErrors.passwordConfirm">
+          {{errors}}
+        </p>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Last name</ion-label>
-      <ion-input type="text" [(ngModel)]="registerInfo.lastName"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>First name</ion-label>
-      <ion-input type="text" [(ngModel)]="registerInfo.firstName"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Last name</ion-label>
+        <ion-input type="text" name="lastName" formControlName="lastName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>First name</ion-label>
+        <ion-input type="text" name="firstName" formControlName="firstName"></ion-input>
+      </ion-item>
 
+      <button type="submit" ion-button full [disabled]="!formGroup.valid">Register</button>
+    </ion-list>
+  </form>
 
-    <button ion-button full (click)="register($event)">Register</button>
-  </ion-list>
 </ion-content>
