@@ -7,6 +7,7 @@ import { Register } from '../../models/register-model';
 import { ClaimListPage } from '../claim-list/claim-list';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { RestProvider } from '../../providers/rest/rest';
+import { UserAuthProvider } from '../../providers/userAuth/userAuth';
 import * as _ from 'lodash'
 
 @IonicPage()
@@ -23,12 +24,15 @@ export class RegisterPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
-    public rest: RestProvider) {
+    public rest: RestProvider,
+    public userAuth: UserAuthProvider) {
     this.initFormGroup();
   }
 
   initFormGroup() {
-    let reg = new RegExp(/^(?=.*[A-Z])(?=.*[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~])/);
+    let regPassword = new RegExp(/^(?=.*[A-Z])(?=.*[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~])/);
+
+    var regEmail = new RegExp(/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/);
     this.formGroup = new FormGroup({
       loginName: new FormControl('', Validators.compose([
         Validators.required
@@ -37,10 +41,14 @@ export class RegisterPage {
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(10),
-        Validators.pattern(reg)
+        Validators.pattern(regPassword)
       ])),
       passwordConfirm: new FormControl('', Validators.compose([
         Validators.required
+      ])),
+      eMail: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern(regEmail)
       ])),
       lastName: new FormControl(''),
       firstName: new FormControl('')
@@ -49,22 +57,27 @@ export class RegisterPage {
     this.formErrors = {
       loginName: [],
       password: [],
-      passwordConfirm: []
+      passwordConfirm: [],
+      eMail:[]
     };
 
     this.validationMessages = {
       loginName: {
-        'required': 'LoginName should not be empty'
+        'required': 'LoginName should not be empty!'
       },
       password: {
-        'required': 'Password should not be empty',
-        'minlength': 'Password should have at least 4 characters',
-        'maxlength': 'Password should have at most 6 characters',
-        'pattern': 'Password should contains at least one CAPTIAL and one symbole'
+        'required': 'Password should not be empty!',
+        'minlength': 'Password should have at least 6 characters!',
+        'maxlength': 'Password should have at most 10 characters!',
+        'pattern': 'Password should contains at least one CAPTIAL and one symbole!'
       },
       passwordConfirm: {
-        'required': 'Please confirm your password',
-        'validateEqual': 'Your password confirm is different from your password'
+        'required': 'Please confirm your password!',
+        'validateEqual': 'Your password confirm is different from your password!'
+      },
+      eMail:{
+        'required': 'E-mail should not be empty!',
+        'pattern': 'Email address is invalid!'
       }
     }
 
@@ -99,7 +112,7 @@ export class RegisterPage {
     });
     loading.present();
     console.log(data);
-    this.rest.register(data)
+    this.userAuth.signupUser(data)
       .then(function (res) {
         loading.dismiss();
         this.navCtrl.setRoot(Login);

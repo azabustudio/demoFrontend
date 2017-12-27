@@ -3,10 +3,10 @@ import { App } from 'ionic-angular/components/app/app';
 import { MyApp } from './../../app/app.component';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
 import { AlertController } from 'ionic-angular';
 import { ClaimListPage } from '../claim-list/claim-list';
 import { RestProvider } from '../../providers/rest/rest';
+import { UserAuthProvider } from '../../providers/userAuth/userAuth';
 import { RegisterPage } from '../register/register';
 import { ActionSheetController } from 'ionic-angular'
 import { TabsPage } from '../tabs/tabs';
@@ -28,6 +28,7 @@ export class Login {
   constructor(
     public navCtrl: NavController,
     public restProvider: RestProvider,
+    public userAuthProvider: UserAuthProvider,
     private alertCtrl: AlertController,
     private app: App,
     public loadingCtrl: LoadingController) {
@@ -95,14 +96,12 @@ export class Login {
       dismissOnPageChange: true
     });
     loading.present();
-    this.restProvider.login(data.loginName, data.password)
+    this.userAuthProvider.signinUser(data.loginName, data.password)
       .then(res => {
-        if ((res as any).status === "success") {
-          localStorage.setItem('loginName', data.loginName);
-          this.navCtrl.setRoot(TabsPage);
-        } else {
-          this.presentAlert()
-        }
+        this.navCtrl.setRoot(TabsPage);
+      }).catch(onRejected => {
+          this.presentAlert();
+          this.navCtrl.setRoot(Login);
       });
   }
 

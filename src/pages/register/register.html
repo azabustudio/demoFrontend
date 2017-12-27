@@ -45,6 +45,16 @@
       </ion-item>
 
       <ion-item>
+        <ion-label floating>E-mail</ion-label>
+        <ion-input type="email" name="eMail" formControlName="eMail"></ion-input>
+      </ion-item>
+      <ion-item no-lines *ngIf="formErrors.eMail.length">
+        <p ion-text color="danger" *ngFor="let errors of formErrors.eMail">
+          {{errors}}
+        </p>
+      </ion-item>
+
+      <ion-item>
         <ion-label floating>Last name</ion-label>
         <ion-input type="text" name="lastName" formControlName="lastName"></ion-input>
       </ion-item>

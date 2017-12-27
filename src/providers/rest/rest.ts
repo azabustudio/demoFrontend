@@ -24,15 +24,6 @@ export class RestProvider {
     });
   }
 
-  login(id, password) {
-    let requestUrl = this.apiUrl + 'login?username=' + id + '&password=' + password;
-    return new Promise(resolve => {
-      console.log('requesting:' + requestUrl);
-      this.http.get(requestUrl)
-        .subscribe(data => resolve(data), err => console.log(err));
-    });
-  }
-
   getClaimList(loginName: string) {
     let requestUrl = this.apiUrl + 'getClaimList?loginName=' + loginName;
     return new Promise(resolve => {
@@ -87,16 +78,6 @@ export class RestProvider {
     return new Promise(resolve => {
       console.log('requesting:' + requestUrl);
       this.http.get(requestUrl)
-        .subscribe(data => resolve(data), err => console.error(err));
-    });
-  }
-
-  register(user: User) {
-    let requestUrl = this.apiUrl + 'addUser';
-    return new Promise(resolve => {
-      console.log('requesting:' + requestUrl);
-      console.log(user);
-      this.http.post(requestUrl, user)
         .subscribe(data => resolve(data), err => console.error(err));
     });
   }

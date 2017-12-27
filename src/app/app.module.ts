@@ -6,6 +6,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 
@@ -19,6 +20,8 @@ import { ClaimDetailPage } from '../pages/claim-detail/claim-detail';
 
 // ビジネスロジック
 import { RestProvider } from '../providers/rest/rest';
+import { UserAuthProvider } from '../providers/userAuth/userAuth';
+import { TokenInterceptor} from '../providers/session/token.interceptor';
 
 // REST API 通信用。
 import { HttpClientModule } from '@angular/common/http';
@@ -63,8 +66,15 @@ import { EqualValidator } from '../directives/equal-validator/equal-validator';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
     RestProvider,
-    StatusFilterPipe
+    StatusFilterPipe,
+    UserAuthProvider,
+    TokenInterceptor
   ]
 })
 export class AppModule { }
