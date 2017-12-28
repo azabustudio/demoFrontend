@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  CognitoUserAttribute, CognitoUserPool, CognitoUser,AuthenticationDetails} from 'amazon-cognito-identity-js';
+import { CognitoUserAttribute, CognitoUserPool, CognitoUser, AuthenticationDetails} from 'amazon-cognito-identity-js';
 import { User } from '../../models/user-model';
 
 const PoolData = {
@@ -106,6 +106,10 @@ export class UserAuthProvider {
 
         var promise = new Promise((resolve) => {
             cognitoUser.signOut();
+
+            localStorage.removeItem("idToken");
+            localStorage.removeItem("loginName");
+            
             console.log("Logout success!")
             resolve("success");
         });

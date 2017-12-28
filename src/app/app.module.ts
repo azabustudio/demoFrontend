@@ -21,8 +21,8 @@ import { ClaimDetailPage } from '../pages/claim-detail/claim-detail';
 // ビジネスロジック
 import { RestProvider } from '../providers/rest/rest';
 import { UserAuthProvider } from '../providers/userAuth/userAuth';
-import { TokenInterceptor} from '../providers/session/token.interceptor';
-
+import { TokenInterceptor } from '../providers/session/token.interceptor';
+import { ErrorInterceptor } from '../providers/session/error.interceptor';
 // REST API 通信用。
 import { HttpClientModule } from '@angular/common/http';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -71,10 +71,16 @@ import { EqualValidator } from '../directives/equal-validator/equal-validator';
       useClass: TokenInterceptor,
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
     RestProvider,
     StatusFilterPipe,
     UserAuthProvider,
-    TokenInterceptor
+    TokenInterceptor,
+    ErrorInterceptor
   ]
 })
 export class AppModule { }

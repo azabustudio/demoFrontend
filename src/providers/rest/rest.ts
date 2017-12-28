@@ -10,7 +10,7 @@ export class RestProvider {
 
   // TODO: Need to modify after AWS instance setting up.
   // apiUrl: string = 'http://18.217.228.115/';
-  apiUrl: string = 'http://localhost:8080/';
+  apiUrl: string = 'https://35t9gd0njk.execute-api.us-east-2.amazonaws.com/sprint4/';
 
   constructor(public http: HttpClient) {
   }
