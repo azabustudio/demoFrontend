@@ -59,28 +59,24 @@ export class Login {
         'required': 'password shoulden\'t be empty'
       }
     };
+  }
 
+  ionViewDidLoad() {
     this.formGroup.valueChanges.subscribe(data => this.onValueChanged(data));
+    console.log(this.events);
     this.events.subscribe('logout', ($event) => {
-      console.log($event);
-      this.navCtrl.setRoot(Login).then(_ => {
-        let toast = this.toast.create({
-          message: $event.type,
-          duration: 2000,
-          position: 'bottom'
-        });
-        toast.present();
+      this.navCtrl.setRoot(Login);
+      let toast = this.toast.create({
+        message: $event.type,
+        duration: 2000,
+        position: 'bottom'
       });
-
-    });
-    this.events.subscribe('logedout', data => {
-      console.log(data);
+      toast.present();
+      this.events.unsubscribe('logout');
     });
   }
 
   onValueChanged(data?: any) {
-    console.log('value changed');
-    console.log(data);
     if (!this.formGroup) return;
     let formGroup = this.formGroup;
     _.forIn(this.formErrors, (value, key) => {

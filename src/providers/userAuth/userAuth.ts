@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CognitoUserAttribute, CognitoUserPool, CognitoUser, AuthenticationDetails} from 'amazon-cognito-identity-js';
+import { CognitoUserAttribute, CognitoUserPool, CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js';
 import { User } from '../../models/user-model';
 
 const PoolData = {
@@ -15,18 +15,18 @@ export class UserAuthProvider {
 
     constructor() {
     }
-    
+
     /**
      * Register a new user.
-     * 
+     *
      * @param {User} user
      */
     signupUser(user: User) {
-        
+
         // Generate user attribute item data.
-        const dataEmail = { Name : 'email', Value : user.eMail};
-        const dataFamilyName = { Name : 'family_name', Value : user.lastName};
-        const dataGivenName = {Name : 'given_name', Value : user.firstName};
+        const dataEmail = { Name: 'email', Value: user.eMail };
+        const dataFamilyName = { Name: 'family_name', Value: user.lastName };
+        const dataGivenName = { Name: 'given_name', Value: user.firstName };
 
         const userAtts = [
             new CognitoUserAttribute(dataEmail),
@@ -36,7 +36,7 @@ export class UserAuthProvider {
 
         var promise = new Promise((resolve, reject) => {
             userPool.signUp(user.loginName, user.password, userAtts, null, ((err, result) => {
-                if(err) {
+                if (err) {
                     console.log('There was an error ', err);
                     reject(err);
                 } else {
@@ -51,7 +51,7 @@ export class UserAuthProvider {
 
     /**
      * user login.
-     * 
+     *
      * @param {string} username
      * @param {string} password
      */
@@ -62,7 +62,7 @@ export class UserAuthProvider {
         };
 
         const authDetails = new AuthenticationDetails(authData);
-        
+
         const userData = {
             Username: username,
             Pool: userPool
@@ -74,11 +74,11 @@ export class UserAuthProvider {
             cognitoUser.authenticateUser(authDetails, {
                 onSuccess: (result) => {
                     console.log('Login success!');
-    
-                    var idToken : any = result.getIdToken();
+
+                    var idToken: any = result.getIdToken();
                     localStorage.setItem('idToken', idToken.jwtToken);
                     localStorage.setItem('loginName', username);
-                    
+
                     resolve(result);
                 },
                 onFailure: (err) => {
@@ -90,12 +90,12 @@ export class UserAuthProvider {
 
         return promise;
     }
-      
+
     /**
      * User logout.
-     * 
+     *
      * @param {string} username
-     * 
+     *
      */
     logoutUser(username: string) {
         const userData = {
@@ -109,7 +109,7 @@ export class UserAuthProvider {
 
             localStorage.removeItem("idToken");
             localStorage.removeItem("loginName");
-            
+
             console.log("Logout success!")
             resolve("success");
         });

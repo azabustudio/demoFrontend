@@ -37,6 +37,7 @@ export class MyPage {
         this.events.publish('logout', {
           type: 'logout'
         });
+        console.log('event published');
       });
   }
 }
