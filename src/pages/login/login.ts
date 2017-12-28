@@ -2,7 +2,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { App } from 'ionic-angular/components/app/app';
 import { MyApp } from './../../app/app.component';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { ClaimListPage } from '../claim-list/claim-list';
 import { RestProvider } from '../../providers/rest/rest';
@@ -31,7 +31,8 @@ export class Login {
     public userAuthProvider: UserAuthProvider,
     private alertCtrl: AlertController,
     private app: App,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public events: Events) {
     this.bindingEvents();
 
     this.formGroup = new FormGroup({
@@ -58,6 +59,7 @@ export class Login {
     };
 
     this.formGroup.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.events.subscribe('logout', _ => this.navCtrl.setRoot(Login));
   }
 
   onValueChanged(data?: any) {
@@ -100,8 +102,8 @@ export class Login {
       .then(res => {
         this.navCtrl.setRoot(TabsPage);
       }).catch(onRejected => {
-          this.presentAlert();
-          this.navCtrl.setRoot(Login);
+        this.presentAlert();
+        this.navCtrl.setRoot(Login);
       });
   }
 

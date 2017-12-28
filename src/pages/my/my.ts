@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { Login } from '../login/login';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { Subject } from 'rxjs/Subject';
@@ -21,19 +21,20 @@ import { UserAuthProvider } from '../../providers/userAuth/userAuth';
 export class MyPage {
 
   name: string = localStorage.getItem('loginName');
+  nav: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
-    public userAuth: UserAuthProvider
+    public userAuth: UserAuthProvider,
+    public events: Events
   ) {
   }
 
   logout() {
-    
     this.userAuth.logoutUser(this.name)
       .then((res) => {
-        this.navCtrl.setRoot(Login);
+        this.events.publish('logout');
       });
   }
 }
