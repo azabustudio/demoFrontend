@@ -34,7 +34,9 @@ export class MyPage {
   logout() {
     this.userAuth.logoutUser(this.name)
       .then((res) => {
-        this.events.publish('logout');
+        this.events.publish('logout', {
+          type: 'logout'
+        });
       });
   }
 }

@@ -35,7 +35,8 @@ export class ClaimListPage {
     let loading = this.loadingCtrl.create({
       spinner: 'dots',
       showBackdrop: true,
-      content: 'Loading claims...'
+      content: 'Loading claims...',
+      dismissOnPageChange: true
     });
     loading.present();
     this.rest.getClaimList(loginName)

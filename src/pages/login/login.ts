@@ -13,6 +13,7 @@ import { TabsPage } from '../tabs/tabs';
 import { User } from '../../models/user-model';
 import * as _ from 'lodash';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 @Component({
   selector: 'page-login',
@@ -32,7 +33,8 @@ export class Login {
     private alertCtrl: AlertController,
     private app: App,
     public loadingCtrl: LoadingController,
-    public events: Events) {
+    public events: Events,
+    public toast: ToastController) {
     this.bindingEvents();
 
     this.formGroup = new FormGroup({
@@ -59,7 +61,21 @@ export class Login {
     };
 
     this.formGroup.valueChanges.subscribe(data => this.onValueChanged(data));
-    this.events.subscribe('logout', _ => this.navCtrl.setRoot(Login));
+    this.events.subscribe('logout', ($event) => {
+      console.log($event);
+      this.navCtrl.setRoot(Login).then(_ => {
+        let toast = this.toast.create({
+          message: $event.type,
+          duration: 2000,
+          position: 'bottom'
+        });
+        toast.present();
+      });
+
+    });
+    this.events.subscribe('logedout', data => {
+      console.log(data);
+    });
   }
 
   onValueChanged(data?: any) {

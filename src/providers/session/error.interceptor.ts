@@ -1,3 +1,4 @@
+import { Events } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -14,11 +15,12 @@ import { UserAuthProvider } from '../userAuth/userAuth';
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor( public userAuth: UserAuthProvider) {
+  constructor(public userAuth: UserAuthProvider,
+    public events: Events) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
+
     return next.handle(request).do((event: HttpEvent<any>) => {
       console.log(event)
       if (event instanceof HttpResponse) {
@@ -33,6 +35,9 @@ export class ErrorInterceptor implements HttpInterceptor {
         // 401: Unauthorized -> 0: Unknow error.
         // Informal solution: when err occured, let the user end the sesion and logout.
         //this.userAuth.logoutUser(localStorage.getItem("loginName"));
+        this.events.publish('logout', {
+          type: 'session timeout'
+        });
       }
     });
   }
