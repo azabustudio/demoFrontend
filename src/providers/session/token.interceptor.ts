@@ -11,10 +11,10 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(public auth: UserAuthProvider) {}
+  constructor(public auth: UserAuthProvider) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
+
     request = request.clone({
       setHeaders: {
         Authorization: localStorage.getItem('idToken')

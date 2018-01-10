@@ -1,3 +1,4 @@
+import { ConfigurationService } from './../configuration/configuration.service';
 import { Claim } from './../../models/claim-model';
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -8,11 +9,12 @@ import { Subject } from "rxjs/Subject";
 @Injectable()
 export class RestProvider {
 
-  // TODO: Need to modify after AWS instance setting up.
-  // apiUrl: string = 'http://18.217.228.115/';
-  apiUrl: string = 'https://35t9gd0njk.execute-api.us-east-2.amazonaws.com/sprint4/';
+  apiUrl: string = ConfigurationService.apiServer;
+  isProduct: boolean = ConfigurationService.isProduct;
 
   constructor(public http: HttpClient) {
+    console.debug('configuration', this.apiUrl);
+    console.debug('configuration', this.isProduct);
   }
 
   getStatus(category) {

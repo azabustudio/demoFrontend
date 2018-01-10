@@ -4,10 +4,9 @@ import { TabsPage } from './tabs';
 
 @NgModule({
   declarations: [
-    TabsPage,
   ],
   imports: [
     IonicPageModule.forChild(TabsPage),
   ],
 })
-export class TabsPageModule {}
+export class TabsPageModule { }

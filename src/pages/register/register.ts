@@ -4,7 +4,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Login } from '../login/login';
 import { ClaimDetailPage } from '../claim-detail/claim-detail';
 import { Register } from '../../models/register-model';
-import { ClaimListPage } from '../claim-list/claim-list';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { RestProvider } from '../../providers/rest/rest';
 import { UserAuthProvider } from '../../providers/userAuth/userAuth';
@@ -58,7 +57,7 @@ export class RegisterPage {
       loginName: [],
       password: [],
       passwordConfirm: [],
-      eMail:[]
+      eMail: []
     };
 
     this.validationMessages = {
@@ -75,7 +74,7 @@ export class RegisterPage {
         'required': 'Please confirm your password!',
         'validateEqual': 'Your password confirm is different from your password!'
       },
-      eMail:{
+      eMail: {
         'required': 'E-mail should not be empty!',
         'pattern': 'Email address is invalid!'
       }

@@ -5,10 +5,7 @@ import { ClaimListPage } from './claim-list';
 import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
-  declarations: [
-    ClaimListPage,
-    StatusFilterPipe
-  ],
+  declarations: [],
   imports: [
     IonicPageModule.forChild(ClaimListPage),
     PipesModule.forRoot()

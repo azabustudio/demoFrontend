@@ -3,11 +3,9 @@ import { IonicPageModule } from 'ionic-angular';
 import { CreateClaimPage } from './create-claim';
 
 @NgModule({
-  declarations: [
-    CreateClaimPage,
-  ],
+  declarations: [],
   imports: [
     IonicPageModule.forChild(CreateClaimPage),
   ],
 })
-export class CreateClaimPageModule {}
+export class CreateClaimPageModule { }

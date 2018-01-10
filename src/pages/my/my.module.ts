@@ -4,10 +4,9 @@ import { MyPage } from './my';
 
 @NgModule({
   declarations: [
-    MyPage,
   ],
   imports: [
     IonicPageModule.forChild(MyPage),
   ],
 })
-export class MyPageModule {}
+export class MyPageModule { }

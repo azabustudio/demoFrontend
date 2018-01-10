@@ -4,10 +4,9 @@ import { RegisterConfirmPage } from './register-confirm';
 
 @NgModule({
   declarations: [
-    RegisterConfirmPage,
   ],
   imports: [
     IonicPageModule.forChild(RegisterConfirmPage),
   ],
 })
-export class RegisterConfirmPageModule {}
+export class RegisterConfirmPageModule { }

@@ -1,3 +1,6 @@
+import { RegisterConfirmPage } from './../pages/register-confirm/register-confirm';
+import { TabsPage } from './../pages/tabs/tabs';
+import { ConfigurationService } from './../providers/configuration/configuration.service';
 import { StatusFilterPipe } from './../pipes/status-filter/status-filter';
 import { MyPage } from './../pages/my/my';
 import { SearchPage } from './../pages/search/search';
@@ -25,8 +28,8 @@ import { TokenInterceptor } from '../providers/session/token.interceptor';
 import { ErrorInterceptor } from '../providers/session/error.interceptor';
 // REST API 通信用。
 import { HttpClientModule } from '@angular/common/http';
-import { TabsPage } from '../pages/tabs/tabs';
 import { EqualValidator } from '../directives/equal-validator/equal-validator';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -40,14 +43,13 @@ import { EqualValidator } from '../directives/equal-validator/equal-validator';
     TabsPage,
     SearchPage,
     MyPage,
-    StatusFilterPipe,
-    EqualValidator
+    RegisterConfirmPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),
-
+    PipesModule,
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -80,7 +82,8 @@ import { EqualValidator } from '../directives/equal-validator/equal-validator';
     StatusFilterPipe,
     UserAuthProvider,
     TokenInterceptor,
-    ErrorInterceptor
+    ErrorInterceptor,
+    ConfigurationService
   ]
 })
 export class AppModule { }
