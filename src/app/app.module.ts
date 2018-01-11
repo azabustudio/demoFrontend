@@ -30,6 +30,11 @@ import { ErrorInterceptor } from '../providers/session/error.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { EqualValidator } from '../directives/equal-validator/equal-validator';
 import { PipesModule } from '../pipes/pipes.module';
+import { Pro } from '@ionic/pro';
+
+const IonicPro = Pro.init('APP_ID', {
+  appVersion: "APP_VERSION"
+});
 
 @NgModule({
   declarations: [
