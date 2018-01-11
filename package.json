@@ -41,6 +41,7 @@
     "@ionic/app-scripts": "3.1.5",
     "@types/node": "^8.5.2",
     "amazon-cognito-identity-js": "^1.29.0",
+    "dotenv": "^4.0.0",
     "lodash": "^4.17.4",
     "typescript": "2.4.2"
   },
