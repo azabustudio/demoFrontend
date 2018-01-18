@@ -19,7 +19,7 @@ export class RestProvider {
 
   getStatus(category) {
     return new Promise(resolve => {
-      let requestUrl = this.apiUrl + 'getStatus?category=' + category;
+      let requestUrl = this.apiUrl + 'claim_status/' + category;
       console.log('requesting:' + requestUrl);
       this.http.get(requestUrl)
         .subscribe(data => resolve(data), err => console.log(err));
@@ -27,7 +27,7 @@ export class RestProvider {
   }
 
   getClaimList(loginName: string) {
-    let requestUrl = this.apiUrl + 'getClaimList?loginName=' + loginName;
+    let requestUrl = this.apiUrl + 'claims?loginName=' + loginName;
     return new Promise(resolve => {
       console.log('requesting:' + requestUrl);
       this.http.get(requestUrl)
@@ -36,7 +36,7 @@ export class RestProvider {
   }
 
   addClaim(claim: Claim) {
-    let requestUrl = this.apiUrl + 'addClaim';
+    let requestUrl = this.apiUrl + 'claims';
     claim.loginName = localStorage.getItem('loginName');
     return new Promise(resolve => {
       console.log('requesting:' + requestUrl);
@@ -55,31 +55,11 @@ export class RestProvider {
   }
 
   updateClaim(claim: Claim) {
-    let requestUrl = this.apiUrl + 'updateClaim';
+    let requestUrl = this.apiUrl + 'claims/' + claim.id;
     return new Promise(resolve => {
       console.log('requesting:' + requestUrl);
       console.log(claim);
-      this.http.post(requestUrl, claim)
-        .subscribe(data => resolve(data), err => console.error(err));
-    });
-  }
-
-  updateClaimStatus(claimId: number, status: string) {
-    let requestUrl = this.apiUrl + 'updateClaimStatus?claimId=' + claimId
-      + '&status=' + status;
-    return new Promise(resolve => {
-      console.log('requesting:' + requestUrl);
-      this.http.get(requestUrl)
-        .subscribe(data => resolve(data), err => console.error(err));
-    });
-  }
-
-  activateClaim(claimId: number, active: boolean) {
-    let requestUrl = this.apiUrl + 'activateClaim?claimId=' + claimId
-      + '&active=' + active;
-    return new Promise(resolve => {
-      console.log('requesting:' + requestUrl);
-      this.http.get(requestUrl)
+      this.http.put(requestUrl, claim)
         .subscribe(data => resolve(data), err => console.error(err));
     });
   }

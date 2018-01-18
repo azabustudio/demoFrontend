@@ -129,7 +129,7 @@ export class ClaimListPage {
           text: 'Yes',
           handler: _ => {
             claim.status = 'closed';
-            this.rest.updateClaimStatus(claim.id, 'closed');
+            this.rest.updateClaim(claim);
           }
         },
         {
@@ -155,7 +155,7 @@ export class ClaimListPage {
           text: 'Yes',
           handler: _ => {
             claim.status = 'pending';
-            this.rest.updateClaimStatus(claim.id, 'pending');
+            this.rest.updateClaim(claim);
           }
         },
         {
@@ -182,7 +182,7 @@ export class ClaimListPage {
           text: 'Yes',
           handler: _ => {
             claim.status = 'processing';
-            this.rest.updateClaimStatus(claim.id, 'processing');
+            this.rest.updateClaim(claim);
           }
         },
         {
@@ -205,7 +205,7 @@ export class ClaimListPage {
           text: 'Yes',
           handler: _ => {
             claim.active = false;
-            this.rest.activateClaim(claim.id, false);
+            this.rest.updateClaim(claim);
           }
         },
         {
