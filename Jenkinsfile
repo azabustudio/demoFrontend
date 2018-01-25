@@ -1,7 +1,7 @@
 #!groovy
 
 def err_msg = ""
-def repo_name = "jenkins-pipeline-sample"
+def repo_name = "demoFrontend"
 def git_url = "git@github.com:azabustudio/${repo_name}.git"
 def dev_branch = "dev"
 def release_branch = "master"
