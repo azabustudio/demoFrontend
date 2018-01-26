@@ -42,7 +42,7 @@ node {
         stage("push to Ionic") {
             withEnv(["PATH+NODE=${JENKINS_HOME}/.nvm/versions/node/v6.9.5/bin/"]) {
                 sh(script:"cd ./${repo_name}", returnStatus:true)
-                sh(script:"pwd")
+                sh(script:"pwd && ls")
                 def PUSH_TO_IONIC = sh(script: "git push ionic master", returnStatus: true) == 0
                 if(!PUSH_TO_IONIC) {
                     error "Ionic へのpushが失敗しました。"
