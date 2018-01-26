@@ -45,6 +45,7 @@ node {
                 if(!PUSH_TO_IONIC) {
                     error "testに失敗しました"
                 }
+                notification(PUSH_TO_IONIC)
             }
         }
 }
