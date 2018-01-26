@@ -48,6 +48,8 @@ node {
                 notification(PUSH_TO_IONIC)
             }
         }
+    }catch(e){
+        echo "${e}"
     }
 }
 
