@@ -48,6 +48,7 @@ node {
                 notification(PUSH_TO_IONIC)
             }
         }
+    }
 }
 
 // 実行結果のSlack通知
