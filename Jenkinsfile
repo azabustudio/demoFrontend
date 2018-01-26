@@ -10,6 +10,8 @@ node {
     try {
         // ソースの取得
         stage("get resource") {
+            sh(script: "pwd")
+            sh(script: "whoami")
             // カレントディレクトにgitリポジトリが存在するか否かの確認
             if(fileExists("./${repo_name}") && fileExists("./${repo_name}/.git")) {
                 // フェッチ
