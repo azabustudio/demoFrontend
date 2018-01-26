@@ -41,7 +41,7 @@ node {
         // push source code to IONIC PRO
         stage("push to Ionic") {
             withEnv(["PATH+NODE=${JENKINS_HOME}/.nvm/versions/node/v6.9.5/bin/"]) {
-                sh(script:"cd ${repo_name}")
+                sh(script:"cd ./${repo_name}")
                 sh(script:"pwd")
                 def PUSH_TO_IONIC = sh(script: "git push ionic master", returnStatus: true) == 0
                 if(!PUSH_TO_IONIC) {
