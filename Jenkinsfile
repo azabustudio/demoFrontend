@@ -24,7 +24,7 @@ node {
                     error "pullに失敗しました"
                 }
                 // ブランチの切替
-                def CHECKOUT_RESULT = sh(script: "cd ./${repo_name} && git checkout ${dev_branch}", returnStatus: true) == 0
+                def CHECKOUT_RESULT = sh(script: "cd ./${repo_name} && git checkout ${release_branch}", returnStatus: true) == 0
                 if(!CHECKOUT_RESULT) {
                     // throw error
                     error "checkoutに失敗しました"
