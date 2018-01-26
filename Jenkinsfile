@@ -10,8 +10,6 @@ node {
     try {
         // ソースの取得
         stage("get resource") {
-            sh(script: "pwd")
-            sh(script: "whoami")
             // カレントディレクトにgitリポジトリが存在するか否かの確認
             if(fileExists("./${repo_name}") && fileExists("./${repo_name}/.git")) {
                 // フェッチ
@@ -40,56 +38,15 @@ node {
             }
         }
 
-        // npmライブラリのインストール
-        stage("install libs") {
+        // push source code to IONIC PRO
+        stage("push to Ionic") {
             withEnv(["PATH+NODE=${JENKINS_HOME}/.nvm/versions/node/v6.9.5/bin/"]) {
-                def NPM_RESULT = sh(script: "cd ./${repo_name} && npm install", returnStatus: true) == 0
-                if(!NPM_RESULT) {
-                    error "npm installに失敗しました"
-                }
-            }
-        }
-
-        // コードのテスト
-        stage("testing code") {
-            withEnv(["PATH+NODE=${JENKINS_HOME}/.nvm/versions/node/v6.9.5/bin/"]) {
-                def TEST_RESULT = sh(script: "cd ./${repo_name} && npm test", returnStatus: true) == 0
-                if(!TEST_RESULT) {
+                def PUSH_TO_IONIC = sh(script: "git push ionic master", returnStatus: true) == 0
+                if(!PUSH_TO_IONIC) {
                     error "testに失敗しました"
                 }
             }
         }
-
-        // コードマージ
-        stage("merge code") {
-            // ブランチの切替
-            def CHECKOUT_RESULT = sh(script: "cd ./${repo_name} && git checkout ${release_branch}", returnStatus: true) == 0
-            if(!CHECKOUT_RESULT) {
-                error "checkoutに失敗しました"
-            }
-
-            // マージ
-            def MERGE_RESULT = sh(script: "cd ./${repo_name} && git merge ${dev_branch}", returnStatus: true) == 0
-            if(!MERGE_RESULT) {
-                error "マージに失敗しました"
-            }
-
-            // リモートへプッシュ
-            def PUSH_RESULT = sh(script: "cd ./${repo_name} && git push origin ${release_branch}:${release_branch}", returnStatus: true) == 0
-            if(!PUSH_RESULT) {
-                error "プッシュに失敗しました"
-            }
-        }
-
-    } catch (err) {
-        err_msg = "${err}"
-        currentBuild.result = "FAILURE"
-    } finally {
-        if(currentBuild.result != "FAILURE") {
-            currentBuild.result = "SUCCESS"
-        }
-        notification(err_msg)
-    }
 }
 
 // 実行結果のSlack通知
