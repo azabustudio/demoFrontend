@@ -43,7 +43,7 @@ node {
             withEnv(["PATH+NODE=${JENKINS_HOME}/.nvm/versions/node/v6.9.5/bin/"]) {
                 sh(script:"cd ./${repo_name}", returnStatus:true)
                 sh(script:"pwd && ls")
-                def PUSH_TO_IONIC = sh(script: "cd ${repo_name} && git push ionic master", returnStatus: true) == 0
+                def PUSH_TO_IONIC = sh(script: "cd ${repo_name} && git push -f ionic master", returnStatus: true) == 0
                 if(!PUSH_TO_IONIC) {
                     error "Ionic へのpushが失敗しました。"
                 }
