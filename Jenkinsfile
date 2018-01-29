@@ -13,13 +13,13 @@ node {
             // カレントディレクトにgitリポジトリが存在するか否かの確認
             if(fileExists("./${repo_name}") && fileExists("./${repo_name}/.git")) {
                 // フェッチ
-                def FETCH_RESULT = sh(script: "cd ./${repo_name} && git fetch --all", returnStatus: true) == 0
+                def FETCH_RESULT = sh(script: "cd ./${repo_name} && git fetch", returnStatus: true) == 0
                 if(!FETCH_RESULT) {
                     // throw error
                     error "fetchに失敗しました"
                 }
                 // gitがある場合はpull
-                def PULL_RESULT = sh(script: "cd ./${repo_name} && git pull --all", returnStatus: true) == 0
+                def PULL_RESULT = sh(script: "cd ./${repo_name} && git pull", returnStatus: true) == 0
                 if(!PULL_RESULT) {
                     error "pullに失敗しました"
                 }
