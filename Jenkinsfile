@@ -61,7 +61,7 @@ node {
 
 // 実行結果のSlack通知
 def notification(msg) {
-    def slack_channel `= "#jenkins"  // jenkinsが通知するチャネル
+    def slack_channel = "#jenkins"  // jenkinsが通知するチャネル
     def slack_domain = "azabustudio"           // slackのドメイン名 https://mydomain.slack.comのmydomainの部分
     def slack_token = ""            // slackのjenkinsプラグインで取得できるtoken
     def slack_color = "good"
