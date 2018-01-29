@@ -50,12 +50,13 @@ node {
             }
         }
     }catch(e){
-        echo "${e}"
+        err_msg = "${e}"
         currentBuild.result = "FAILURE"
     }finally{
         if(currentBuild.result != "FAILURE") {
             currentBuild.result = "SUCCESS"
         }
+        notification(err_msg)
     }
 }
 
