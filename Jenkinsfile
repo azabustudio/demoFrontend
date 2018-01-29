@@ -47,11 +47,15 @@ node {
                 if(!PUSH_TO_IONIC) {
                     error "Ionic へのpushが失敗しました。"
                 }
-                notification(PUSH_TO_IONIC)
             }
         }
     }catch(e){
         echo "${e}"
+        currentBuild.result = "FAILURE"
+    }finally{
+        if(currentBuild.result != "FAILURE") {
+            currentBuild.result = "SUCCESS"
+        }
     }
 }
 
