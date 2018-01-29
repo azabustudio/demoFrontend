@@ -6,11 +6,12 @@ def git_url = "git@github.com:azabustudio/${repo_name}.git"
 def dev_branch = "dev"
 def release_branch = "master"
 
-pipeline {
+node {
+    triggers {
+        cron('H 4/* 0 0 1-5')
+    }
+
     try {
-        triggers {
-            cron('H 4/* 0 0 1-5')
-        }
         // ソースの取得
         stage("get resource") {
             // カレントディレクトにgitリポジトリが存在するか否かの確認
