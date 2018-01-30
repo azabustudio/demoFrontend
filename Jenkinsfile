@@ -4,7 +4,9 @@ def err_msg = ""
 def repo_name = "demoFrontend"
 def git_url = "git@github.com:azabustudio/${repo_name}.git"
 def dev_branch = "dev"
-def release_branch = "master"
+def payload= parseJson("$payload")
+//branch name
+def branch = payload.ref.split("/")[2]
 
 node {
     try {
@@ -24,7 +26,7 @@ node {
                     error "pullに失敗しました"
                 }
                 // ブランチの切替
-                def CHECKOUT_RESULT = sh(script: "cd ./${repo_name} && git checkout ${release_branch}", returnStatus: true) == 0
+                def CHECKOUT_RESULT = sh(script: "cd ./${repo_name} && git checkout ${branch}", returnStatus: true) == 0
                 if(!CHECKOUT_RESULT) {
                     // throw error
                     error "checkoutに失敗しました"
@@ -38,12 +40,11 @@ node {
             }
         }
 
-        // push source code to IONIC PRO
+        //push source code to IONIC PRO
         stage("push to Ionic") {
             withEnv(["PATH+NODE=${JENKINS_HOME}/.nvm/versions/node/v6.9.5/bin/"]) {
                 sh(script:"cd ./${repo_name}", returnStatus:true)
-                sh(script:"pwd && ls")
-                def PUSH_TO_IONIC = sh(script: "cd ${repo_name} && git push -f ionic master", returnStatus: true) == 0
+                def PUSH_TO_IONIC = sh(script: "cd ${repo_name} && git push -f ionic ${branch}", returnStatus: true) == 0
                 if(!PUSH_TO_IONIC) {
                     error "Ionic へのpushが失敗しました。"
                 }
@@ -58,6 +59,11 @@ node {
         }
         notification(err_msg)
     }
+}
+
+@NonCPS
+def parseJson(text) {
+    return new groovy.json.JsonSlurperClassic().parseText(text)
 }
 
 // 実行結果のSlack通知
