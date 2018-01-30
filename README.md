@@ -1,6 +1,5 @@
 # demoFrontend
 Front end source of our demo app.
-test
 ## 1. How to Install
 ```git clone git@github.com:azabustudio/demoFrontend.git```
 
