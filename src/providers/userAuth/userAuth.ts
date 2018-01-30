@@ -4,8 +4,8 @@ import { User } from '../../models/user-model';
 
 const PoolData = {
     region: 'us-east-2',
-    UserPoolId: 'us-east-2_55w55npkp',
-    ClientId: '68tua7l0ucsocvasemrqkmmmc6'
+    UserPoolId: 'us-east-2_gtbMZbab2',
+    ClientId: '383olvtdhmeklj24mvrd649n0o'
 };
 
 const userPool = new CognitoUserPool(PoolData);
