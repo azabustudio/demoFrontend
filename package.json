@@ -43,6 +43,7 @@
     "amazon-cognito-identity-js": "^1.29.0",
     "dotenv": "^4.0.0",
     "lodash": "^4.17.4",
+    "protractor-jasmine2-html-reporter": "0.0.7",
     "typescript": "2.4.2"
   },
   "description": "An Ionic project",
