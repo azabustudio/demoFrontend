@@ -12,6 +12,7 @@ node {
     try {
         // ソースの取得
         stage("get resource") {
+            sh "pwd"
             // カレントディレクトにgitリポジトリが存在するか否かの確認
             if(fileExists("./${repo_name}") && fileExists("./${repo_name}/.git")) {
                 // フェッチ
