@@ -18,12 +18,11 @@ Start the iOS and andorid simulator: <br>
 ```ionic serve --lab```
 
 ### How to Change REST-API(back-end) Base-url
-To connect with REST-API, we define the connection base url as below. 
+To connect with REST-API, we define the connection base url in the environment file (~/demoFrontend/.env) as below.
 
-You can modify the base url if needed.
+```sh
+API_URL=https://511r7giw3g.execute-api.us-east-2.amazonaws.com/production/
 
-(RestProvider: \demoFrontend\src\providers\rest\rest.ts)
-
-```apiUrl: string = 'http://localhost:8080/';```
+```
 
 
